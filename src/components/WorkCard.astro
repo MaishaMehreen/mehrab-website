@@ -1,0 +1,28 @@
+---
+// Portfolio card: thumbnail (or placeholder), category tag, hover preview clip.
+import { ytThumb } from '../lib/links.js';
+const { p, light = false, preview = false, headingTag = 'h3' } = Astro.props;
+const H = headingTag;
+const thumb = p.thumbnail || ytThumb(p.youtubeId);
+---
+<a class="card" href={`/work/${p.slug}`} data-reveal data-cat={p.category} data-preview={preview ? '' : undefined} data-cursor="video" data-cursor-label="View" style={`display: flex; flex-direction: column; gap: 14px; ${light ? 'color: #0A0A0A' : ''}`}>
+  <div class="ph" style="aspect-ratio: 4 / 5; border-radius: 4px">
+    <div class="glow"></div>
+    {thumb ? <img src={thumb} alt="" loading="lazy" decoding="async" /> : <span class="phl">[ {p.placeholderLabel} ]</span>}
+    {preview && p.previewClip && <video muted loop playsinline preload="none" data-src={p.previewClip} aria-hidden="true" class="pv"></video>}
+    <span class="tag" style="position: absolute; top: 16px; left: 16px; z-index: 3">{p.category}</span>
+    {preview && <span class="hov" style="position: absolute; top: 16px; right: 16px; z-index: 3; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ac)">● Preview</span>}
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px">
+    <H class="disp" style="margin: 0; font-size: 28px">{p.title}</H>
+    <span style={`font-size: 13px; color: ${light ? '#55524C' : 'var(--muted)'}; flex: none`}>{p.meta}</span>
+  </div>
+</a>
+
+<style is:global>
+  .card .hov { opacity: 0; transition: opacity .4s; }
+  .card:hover .hov, .card:focus-visible .hov { opacity: 1; }
+  .card video.pv { opacity: 0; transition: opacity .4s; z-index: 2; }
+  .card video.pv.ready { opacity: 1; }
+  .card:not(:hover) video.pv { opacity: 0; }
+</style>

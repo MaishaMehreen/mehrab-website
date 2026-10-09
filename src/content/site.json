@@ -1,0 +1,411 @@
+{
+  "_HOW_TO_EDIT": [
+    "This is the ONE file that holds all the words, links, prices and videos on the website.",
+    "1. Change only the text between the quote marks on the right-hand side, e.g. \"price\": \"$49\".",
+    "2. Keep every quote mark, comma, colon and bracket exactly where it is. If the site stops building, a missing comma is the usual cause (paste this file into jsonlint.com to find it).",
+    "3. Anything in [ square brackets ] is a placeholder still waiting for real info from Mehrab.",
+    "4. Leave a value as \"\" (empty) to hide it or fall back to the placeholder, e.g. an empty youtubeId shows a placeholder box.",
+    "5. Videos: for YouTube, paste only the ID (the part after watch?v= ), e.g. \"dQw4w9WgXcQ\". For Vimeo, paste the number from the link.",
+    "6. Short muted preview clips (hero showreel + hover previews) go in the folder public/videos/ with the file names listed below.",
+    "7. To switch the accent colour to yellow, change accentColor to \"#FFE11A\".",
+    "8. Save the file. Netlify rebuilds the live site automatically after you upload/push the change."
+  ],
+
+  "siteUrl": "https://your-site-name.netlify.app",
+  "accentColor": "#C6FF3D",
+  "googleAnalyticsId": "",
+
+  "brand": {
+    "name": "Mehrab",
+    "fullName": "Mehrab Al Mahmud",
+    "logoText": "Mehrab",
+    "logoDomain": "edits",
+    "tagline": "Video editing for faceless & short-form creators",
+    "positioning": "Retention-first video editing for faceless and short-form creators."
+  },
+
+  "contact": {
+    "email": "",
+    "emailLabel": "[ email address ]",
+    "whatsappNumber": "",
+    "whatsappLabel": "[ +880 number ]",
+    "fiverrUrl": "https://www.fiverr.com/m3hra6",
+    "fiverrLabel": "fiverr.com/m3hra6",
+    "bookingUrl": "",
+    "budgetRanges": ["[ Range 1 ]", "[ Range 2 ]", "[ Range 3 ]"],
+    "videoTypes": ["Faceless YouTube", "Reels / TikTok / Shorts", "Food content", "Other"],
+    "videosPerMonth": ["1–4", "5–10", "11–20", "20+"],
+    "callTimes": ["9:00 AM", "10:30 AM", "1:00 PM", "3:30 PM", "5:00 PM", "7:30 PM"]
+  },
+
+  "seo": {
+    "home": { "title": "Faceless YouTube Video Editor | Mehrab", "description": "Retention-first video editing for faceless YouTube channels, Reels, TikTok, Shorts and food content. Top Rated on Fiverr, 4.9 from 973 reviews." },
+    "work": { "title": "Portfolio – Faceless YouTube & Short-Form Edits | Mehrab", "description": "Faceless YouTube, Reels/TikTok/Shorts and food videos edited by Mehrab. Filter by long-form, short-form and food." },
+    "services": { "title": "Video Editing Services for YouTube, Reels & Food | Mehrab", "description": "Faceless YouTube editing, Reels/TikTok/Shorts and food content editing. Often delivered in 1–2 days." },
+    "pricing": { "title": "Video Editing Pricing & Monthly Retainer | Mehrab", "description": "Simple per-video packages for faceless YouTube and short-form videos, plus a monthly retainer for weekly creators." },
+    "about": { "title": "About Mehrab – Top Rated Video Editor from Bangladesh", "description": "Mehrab Al Mahmud is a Top Rated Fiverr video editor and former video editor at The Daily Mash, helping faceless and short-form creators." },
+    "faq": { "title": "FAQ – Turnaround, Revisions & Payment | Mehrab", "description": "Answers about turnaround time, revisions, sending footage, payment and time zones." },
+    "contact": { "title": "Book a Free Call or Get a Quote | Mehrab", "description": "Book a free 15-minute call or request a quote for faceless YouTube, short-form or food video editing." },
+    "privacy": { "title": "Privacy Policy | Mehrab", "description": "How this website handles the information you share." }
+  },
+
+  "showreel": {
+    "loopFile": "/videos/showreel.mp4",
+    "posterImage": "",
+    "fullYoutubeId": "",
+    "fullVimeoId": ""
+  },
+
+  "stats": {
+    "rating": 4.9,
+    "reviews": 973,
+    "fiveStar": 927,
+    "level": "Top Rated",
+    "responseTime": "~1 hr",
+    "countries": ["US", "UK", "NL"]
+  },
+
+  "marquee": ["Faceless YouTube", "Reels", "TikTok", "Shorts", "Food content", "More watch time", "On time, every time"],
+
+  "services": [
+    {
+      "id": "faceless",
+      "title": "Faceless YouTube",
+      "short": "Top-10, list and explainer videos built to hold viewers to the end — without you ever on camera.",
+      "intro": "Top-10, list, explainer and health or lifestyle videos. Your channel grows, your face stays private.",
+      "includes": [
+        "Story-driven structure with a strong hook",
+        "Voiceover sync, B-roll and on-screen text",
+        "Music, sound effects and transitions",
+        "[ Thumbnail? Confirm with Mehrab ]"
+      ],
+      "turnaround": "Often 1–2 days",
+      "bestFor": "Weekly uploads",
+      "examples": [
+        { "label": "Long-form example 1", "youtubeId": "", "vimeoId": "" },
+        { "label": "Example 2", "youtubeId": "", "vimeoId": "" },
+        { "label": "Example 3", "youtubeId": "", "vimeoId": "" }
+      ]
+    },
+    {
+      "id": "short-form",
+      "title": "Reels, TikTok & Shorts",
+      "short": "Hook-first vertical edits with captions and beat-synced cuts that stop the scroll.",
+      "intro": "Vertical edits that win the first second and keep people to the loop. Built for posting every day.",
+      "includes": [
+        "Scroll-stopping hooks and fast pacing",
+        "Animated captions and beat-synced cuts",
+        "One edit, sized for every platform"
+      ],
+      "turnaround": "Often 1–2 days",
+      "bestFor": "High-volume posting",
+      "examples": [
+        { "label": "Reel 1", "youtubeId": "", "vimeoId": "" },
+        { "label": "Reel 2", "youtubeId": "", "vimeoId": "" },
+        { "label": "Reel 3", "youtubeId": "", "vimeoId": "" }
+      ]
+    },
+    {
+      "id": "food",
+      "title": "Food content",
+      "short": "Short-form food videos that look delicious and move fast — made for high-volume posting.",
+      "intro": "Short food videos with rich colour, satisfying close-ups and quick rhythm — the kind people save and share.",
+      "includes": [
+        "Colour that makes food look its best",
+        "Recipe steps, text and sound design",
+        "Batches for weekly content calendars"
+      ],
+      "turnaround": "Often 1–2 days",
+      "bestFor": "Food & lifestyle creators",
+      "examples": [
+        { "label": "Food reel 1", "youtubeId": "", "vimeoId": "" },
+        { "label": "Food reel 2", "youtubeId": "", "vimeoId": "" }
+      ]
+    }
+  ],
+
+  "projects": [
+    {
+      "slug": "top-10-faceless-video",
+      "title": "Top 10 faceless video",
+      "category": "Long-form",
+      "tag": "Faceless YouTube",
+      "meta": "[ Channel ] · 10:24",
+      "featured": true,
+      "placeholderLabel": "Video thumbnail",
+      "thumbnail": "",
+      "previewClip": "/videos/preview-top-10.mp4",
+      "youtubeId": "",
+      "vimeoId": "",
+      "client": "[ Channel / brand ]",
+      "format": "[ e.g. weekly 10-min videos ]",
+      "turnaround": "[ e.g. 48 hours ]",
+      "videosEdited": "[ Number ]",
+      "goal": "[ The client's goal in 2–3 sentences — e.g. a faceless channel needed a reliable weekly editor to grow watch time without showing their face. ]",
+      "whatIDid": ["[ Hook in the first 5 seconds ]", "[ Pacing, B-roll and on-screen text ]", "[ Music, sound effects and captions ]", "[ Delivered on schedule, every week ]"],
+      "results": [
+        { "value": "[ +X% ]", "label": "Average view duration" },
+        { "value": "[ X views ]", "label": "Total views" },
+        { "value": "[ +X ]", "label": "Subscribers gained" }
+      ],
+      "quote": "[ Approved quote from this client ]",
+      "quoteBy": "[ Client name or initials ] · [ Country ]"
+    },
+    {
+      "slug": "recipe-in-30-seconds",
+      "title": "Recipe in 30 seconds",
+      "category": "Food",
+      "tag": "Food content",
+      "meta": "[ Client ] · 0:30",
+      "featured": true,
+      "placeholderLabel": "Reel preview",
+      "thumbnail": "",
+      "previewClip": "/videos/preview-recipe.mp4",
+      "youtubeId": "",
+      "vimeoId": "",
+      "client": "[ Channel / brand ]",
+      "format": "[ e.g. 30-second recipe reels ]",
+      "turnaround": "[ e.g. 24 hours ]",
+      "videosEdited": "[ Number ]",
+      "goal": "[ The client's goal in 2–3 sentences. ]",
+      "whatIDid": ["[ Hook in the first second ]", "[ Close-ups, colour and recipe text ]", "[ Music and sound design ]", "[ Delivered on schedule ]"],
+      "results": [
+        { "value": "[ +X% ]", "label": "Average view duration" },
+        { "value": "[ X views ]", "label": "Total views" },
+        { "value": "[ +X ]", "label": "Followers gained" }
+      ],
+      "quote": "[ Approved quote from this client ]",
+      "quoteBy": "[ Client name or initials ] · [ Country ]"
+    },
+    {
+      "slug": "health-explainer",
+      "title": "Health explainer",
+      "category": "Long-form",
+      "tag": "Faceless YouTube",
+      "meta": "[ Channel ] · 8:10",
+      "featured": true,
+      "placeholderLabel": "Video thumbnail",
+      "thumbnail": "",
+      "previewClip": "/videos/preview-health.mp4",
+      "youtubeId": "",
+      "vimeoId": "",
+      "client": "[ Channel / brand ]",
+      "format": "[ e.g. weekly 8-min explainers ]",
+      "turnaround": "[ e.g. 48 hours ]",
+      "videosEdited": "[ Number ]",
+      "goal": "[ The client's goal in 2–3 sentences. ]",
+      "whatIDid": ["[ Hook in the first 5 seconds ]", "[ Pacing, B-roll and on-screen text ]", "[ Music, sound effects and captions ]", "[ Delivered on schedule, every week ]"],
+      "results": [
+        { "value": "[ +X% ]", "label": "Average view duration" },
+        { "value": "[ X views ]", "label": "Total views" },
+        { "value": "[ +X ]", "label": "Subscribers gained" }
+      ],
+      "quote": "[ Approved quote from this client ]",
+      "quoteBy": "[ Client name or initials ] · [ Country ]"
+    },
+    {
+      "slug": "satire-short",
+      "title": "Satire short",
+      "category": "Short-form",
+      "tag": "Reels / Shorts",
+      "meta": "[ Client ] · 0:45",
+      "featured": true,
+      "placeholderLabel": "Reel preview",
+      "thumbnail": "",
+      "previewClip": "/videos/preview-satire.mp4",
+      "youtubeId": "",
+      "vimeoId": "",
+      "client": "[ Channel / brand ]",
+      "format": "[ e.g. 45-second satire shorts ]",
+      "turnaround": "[ e.g. same day ]",
+      "videosEdited": "[ Number ]",
+      "goal": "[ The client's goal in 2–3 sentences. ]",
+      "whatIDid": ["[ Punchline-first hook ]", "[ Fast cuts and captions ]", "[ Sound effects and timing ]", "[ Delivered on schedule ]"],
+      "results": [
+        { "value": "[ +X% ]", "label": "Average view duration" },
+        { "value": "[ X views ]", "label": "Total views" },
+        { "value": "[ +X ]", "label": "Followers gained" }
+      ],
+      "quote": "[ Approved quote from this client ]",
+      "quoteBy": "[ Client name or initials ] · [ Country ]"
+    },
+    {
+      "slug": "street-food-series",
+      "title": "Street food series",
+      "category": "Food",
+      "tag": "Food content",
+      "meta": "[ Client ] · 5 reels",
+      "featured": true,
+      "placeholderLabel": "Reel preview",
+      "thumbnail": "",
+      "previewClip": "/videos/preview-street-food.mp4",
+      "youtubeId": "",
+      "vimeoId": "",
+      "client": "[ Channel / brand ]",
+      "format": "[ e.g. 5-part reel series ]",
+      "turnaround": "[ e.g. 48 hours ]",
+      "videosEdited": "[ Number ]",
+      "goal": "[ The client's goal in 2–3 sentences. ]",
+      "whatIDid": ["[ Hook in the first second ]", "[ Colour and close-ups ]", "[ Text, music and sound design ]", "[ Delivered as a batch ]"],
+      "results": [
+        { "value": "[ +X% ]", "label": "Average view duration" },
+        { "value": "[ X views ]", "label": "Total views" },
+        { "value": "[ +X ]", "label": "Followers gained" }
+      ],
+      "quote": "[ Approved quote from this client ]",
+      "quoteBy": "[ Client name or initials ] · [ Country ]"
+    },
+    {
+      "slug": "tech-list-video",
+      "title": "Tech list video",
+      "category": "Long-form",
+      "tag": "Faceless YouTube",
+      "meta": "[ Channel ] · 12:02",
+      "featured": true,
+      "placeholderLabel": "Video thumbnail",
+      "thumbnail": "",
+      "previewClip": "/videos/preview-tech.mp4",
+      "youtubeId": "",
+      "vimeoId": "",
+      "client": "[ Channel / brand ]",
+      "format": "[ e.g. 12-min list videos ]",
+      "turnaround": "[ e.g. 48 hours ]",
+      "videosEdited": "[ Number ]",
+      "goal": "[ The client's goal in 2–3 sentences. ]",
+      "whatIDid": ["[ Hook in the first 5 seconds ]", "[ Pacing, B-roll and on-screen text ]", "[ Music, sound effects and captions ]", "[ Followed the brief closely ]"],
+      "results": [
+        { "value": "[ +X% ]", "label": "Average view duration" },
+        { "value": "[ X views ]", "label": "Total views" },
+        { "value": "[ +X ]", "label": "Subscribers gained" }
+      ],
+      "quote": "[ Approved quote from this client ]",
+      "quoteBy": "[ Client name or initials ] · [ Country ]"
+    },
+    {
+      "slug": "podcast-clip-pack",
+      "title": "Podcast clip pack",
+      "category": "Short-form",
+      "tag": "Reels / Shorts",
+      "meta": "[ Client ] · 10 clips",
+      "featured": false,
+      "placeholderLabel": "Reel preview",
+      "thumbnail": "",
+      "previewClip": "/videos/preview-podcast.mp4",
+      "youtubeId": "",
+      "vimeoId": "",
+      "client": "[ Channel / brand ]",
+      "format": "[ e.g. 10 vertical clips ]",
+      "turnaround": "[ e.g. 48 hours ]",
+      "videosEdited": "[ Number ]",
+      "goal": "[ The client's goal in 2–3 sentences. ]",
+      "whatIDid": ["[ Picked the strongest moments ]", "[ Animated captions ]", "[ Reframed for vertical ]", "[ Delivered as a batch ]"],
+      "results": [
+        { "value": "[ +X% ]", "label": "Average view duration" },
+        { "value": "[ X views ]", "label": "Total views" },
+        { "value": "[ +X ]", "label": "Followers gained" }
+      ],
+      "quote": "[ Approved quote from this client ]",
+      "quoteBy": "[ Client name or initials ] · [ Country ]"
+    },
+    {
+      "slug": "lifestyle-facts",
+      "title": "Lifestyle facts",
+      "category": "Long-form",
+      "tag": "Faceless YouTube",
+      "meta": "[ Channel ] · 9:30",
+      "featured": false,
+      "placeholderLabel": "Video thumbnail",
+      "thumbnail": "",
+      "previewClip": "/videos/preview-lifestyle.mp4",
+      "youtubeId": "",
+      "vimeoId": "",
+      "client": "[ Channel / brand ]",
+      "format": "[ e.g. weekly 9-min videos ]",
+      "turnaround": "[ e.g. 48 hours ]",
+      "videosEdited": "[ Number ]",
+      "goal": "[ The client's goal in 2–3 sentences. ]",
+      "whatIDid": ["[ Hook in the first 5 seconds ]", "[ Pacing, B-roll and on-screen text ]", "[ Music, sound effects and captions ]", "[ Delivered on schedule, every week ]"],
+      "results": [
+        { "value": "[ +X% ]", "label": "Average view duration" },
+        { "value": "[ X views ]", "label": "Total views" },
+        { "value": "[ +X ]", "label": "Subscribers gained" }
+      ],
+      "quote": "[ Approved quote from this client ]",
+      "quoteBy": "[ Client name or initials ] · [ Country ]"
+    },
+    {
+      "slug": "dessert-close-ups",
+      "title": "Dessert close-ups",
+      "category": "Food",
+      "tag": "Food content",
+      "meta": "[ Client ] · 0:20",
+      "featured": false,
+      "placeholderLabel": "Reel preview",
+      "thumbnail": "",
+      "previewClip": "/videos/preview-dessert.mp4",
+      "youtubeId": "",
+      "vimeoId": "",
+      "client": "[ Channel / brand ]",
+      "format": "[ e.g. 20-second dessert reels ]",
+      "turnaround": "[ e.g. 24 hours ]",
+      "videosEdited": "[ Number ]",
+      "goal": "[ The client's goal in 2–3 sentences. ]",
+      "whatIDid": ["[ Satisfying close-ups first ]", "[ Rich colour grade ]", "[ Music and ASMR sound ]", "[ Delivered on schedule ]"],
+      "results": [
+        { "value": "[ +X% ]", "label": "Average view duration" },
+        { "value": "[ X views ]", "label": "Total views" },
+        { "value": "[ +X ]", "label": "Followers gained" }
+      ],
+      "quote": "[ Approved quote from this client ]",
+      "quoteBy": "[ Client name or initials ] · [ Country ]"
+    }
+  ],
+
+  "testimonials": [
+    { "quote": "[ Approved quote — on about the 30th video, praising attention to every requested detail ]", "by": "[ Client initials ] · United States", "rating": "[ Rating ]" },
+    { "quote": "[ Approved quote — fast, proactive and easy to communicate with ]", "by": "[ Client initials ] · United Kingdom", "rating": "[ Rating ]" },
+    { "quote": "[ Approved quote — followed specific instructions closely, will be back ]", "by": "[ Client initials ] · US tech channel", "rating": "[ Rating ]" }
+  ],
+
+  "pricing": {
+    "tiers": [
+      { "name": "Basic", "description": "[ Short description — e.g. a clean, simple edit ]", "price": "[ $— ]", "unit": "/ video", "features": ["[ Video length ]", "[ Revisions included ]", "[ Delivery time ]"], "popular": false },
+      { "name": "Standard", "description": "[ Short description — e.g. full edit with motion & sound ]", "price": "[ $— ]", "unit": "/ video", "features": ["[ Video length ]", "[ Revisions included ]", "[ Delivery time ]"], "popular": true },
+      { "name": "Premium", "description": "[ Short description — e.g. everything, plus priority delivery ]", "price": "[ $— ]", "unit": "/ video", "features": ["[ Video length ]", "[ Revisions included ]", "[ Delivery time ]"], "popular": false }
+    ],
+    "retainer": {
+      "title": "Monthly retainer",
+      "description": "A set number of videos every month, a reserved spot in my schedule and priority turnaround. Ideal for faceless channels that upload on a schedule.",
+      "price": "[ $— ]",
+      "unit": "/ month"
+    },
+    "fiverrFromFaceless": "$15",
+    "fiverrFromFood": "$20"
+  },
+
+  "about": {
+    "intro": "I’m a Top Rated video editor from Bangladesh. I help faceless and short-form creators turn raw footage and scripts into videos people actually finish.",
+    "bio": "[ Short bio in Mehrab’s words — how he started editing and why he loves it. 2–3 sentences. ]",
+    "experience": [
+      { "role": "Video Editor", "dates": "May 2023 – Jan 2024", "company": "The Daily Mash", "text": "Edited video for a satirical news brand with over 1 million followers." },
+      { "role": "Freelance Editor", "dates": "[ Since 20XX ]", "company": "Fiverr · Top Rated", "text": "Faceless YouTube and short-form food videos for clients in the US, UK, Netherlands and beyond." }
+    ],
+    "certifications": ["Adobe Premiere Masterclass: Video Editing", "Complete Digital Marketing Course 12-in-1"],
+    "tools": ["Premiere Pro", "Photoshop", "Graphic design", "Digital marketing"],
+    "process": [
+      { "title": "Footage or script", "text": "Send your clips, voiceover or script, plus any reference videos." },
+      { "title": "First draft", "text": "I build the story, hook and pacing into a full first cut." },
+      { "title": "Revisions", "text": "You share notes, I fine-tune until it feels right." },
+      { "title": "Final delivery", "text": "Ready-to-upload files, on time, every time." }
+    ]
+  },
+
+  "faq": [
+    { "q": "How fast is turnaround?", "a": "Most videos are delivered in 1–2 days, depending on length and how much footage there is. Rush delivery: [ yes / no — confirm ]." },
+    { "q": "How many revisions do I get?", "a": "[ Number ] revisions are included with every package. I want you to be happy with the final video." },
+    { "q": "How do I send my footage?", "a": "Share a link from Google Drive, Dropbox or WeTransfer — whatever you already use. [ Confirm preferred services ]" },
+    { "q": "How do I pay?", "a": "[ Payment methods for direct clients ]. If you’d rather pay through a platform, you can order on Fiverr instead." },
+    { "q": "What about time zones?", "a": "I’m based in Bangladesh and work with clients across the US, UK and Europe. Often your video is edited while you sleep — and ready when you wake up." },
+    { "q": "Do you keep my channel private?", "a": "Yes. Faceless creators trust me with their channels — I only show work publicly with your permission." }
+  ]
+}

@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import site from '../content/site.json';
+
+const { seo, faq } = site;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.filter((f) => !/\[/.test(f.a)).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+<Base title={seo.faq.title} description={seo.faq.description} active="faq">
+  <section class="w" style="padding-top: clamp(56px, 7vw, 110px); padding-bottom: clamp(80px, 9vw, 140px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(40px, 6vw, 96px); align-items: start">
+    <div class="stack" style="gap: 24px">
+      <p class="kick" data-fade style="margin: 0">FAQ</p>
+      <h1 class="disp" style="margin: 0; font-size: clamp(72px, 10vw, 168px)">
+        <span class="rise"><span>Good</span></span>
+        <span class="rise"><span class="ac">questions</span></span>
+      </h1>
+      <p class="muted" data-fade style="margin: 0; font-size: 18px; max-width: 400px">Can’t find your answer? Message me — I usually reply within about an hour.</p>
+      <div data-fade><a class="btn btn-ac" href="/contact#quote">Ask me directly</a></div>
+    </div>
+    <div class="faq" data-fade style="border-top: 1.5px solid var(--box)">
+      {faq.map((f, i) => (
+        <details open={i === 0}>
+          <summary><span class="disp" style="font-size: clamp(24px, 2.6vw, 36px)">{f.q}</span><Icon name="plus" size={28} class="pl" /></summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <CtaBand kicker="Still have questions?" lines={['Let’s talk', 'it through.']} />
+  {schema.mainEntity.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+</Base>

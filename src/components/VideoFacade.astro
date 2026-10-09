@@ -1,0 +1,23 @@
+---
+// Lightweight video: shows a thumbnail + play button; the real YouTube/Vimeo
+// player only loads when clicked. With no video ID it shows a labelled placeholder.
+import Icon from './Icon.astro';
+import { ytThumb } from '../lib/links.js';
+const { youtubeId = '', vimeoId = '', title = 'Video', label = 'YouTube / Vimeo embed', ratio = '16 / 9', big = false, style = '', class: cls = '', reveal = false } = Astro.props;
+const has = !!(youtubeId || vimeoId);
+const thumb = ytThumb(youtubeId);
+---
+<div class:list={['ph', cls]} style={`aspect-ratio: ${ratio}; border-radius: 4px; ${style}`} data-reveal={reveal ? '' : undefined}>
+  {has ? (
+    <button type="button" class="facade" data-youtube={youtubeId || undefined} data-vimeo={vimeoId || undefined} aria-label={`Play video: ${title}`} data-cursor="video" data-cursor-label="Play">
+      {thumb ? <img src={thumb} alt="" loading="lazy" decoding="async" /> : <div class="glow"></div>}
+      <span class="play" style={big ? 'width: 96px; height: 96px' : 'width: 72px; height: 72px'}><Icon name="play" size={big ? 28 : 24} /></span>
+    </button>
+  ) : (
+    <>
+      <div class="glow"></div>
+      <span class="phl">[ {label} ]</span>
+      {big && <span class="play" aria-hidden="true" style="position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 96px; height: 96px"><Icon name="play" size={28} /></span>}
+    </>
+  )}
+</div>

@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import VideoFacade from '../components/VideoFacade.astro';
+import Icon from '../components/Icon.astro';
+import site from '../content/site.json';
+
+const { seo, services } = site;
+// Layout of the example videos per service, as in the design
+const layouts = {
+  faceless: { cols: 2, items: [{ ratio: '16 / 9', span: 2 }, { ratio: '16 / 9' }, { ratio: '16 / 9' }] },
+  'short-form': { cols: 3, items: [{ ratio: '9 / 16' }, { ratio: '9 / 16', offset: 48 }, { ratio: '9 / 16' }] },
+  food: { cols: 2, items: [{ ratio: '4 / 5' }, { ratio: '4 / 5', offset: 56 }] },
+};
+---
+<Base title={seo.services.title} description={seo.services.description} active="services">
+  <section class="w" style="padding-top: clamp(56px, 7vw, 110px); padding-bottom: clamp(56px, 7vw, 100px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 32px">
+    <div class="stack" style="gap: 20px">
+      <p class="kick" data-fade style="margin: 0">Services</p>
+      <h1 class="disp h-page">
+        <span class="rise"><span>Edits that</span></span>
+        <span class="rise"><span class="ac">keep them</span></span>
+        <span class="rise"><span>watching</span></span>
+      </h1>
+    </div>
+    <p class="muted lede" data-fade style="max-width: 400px">Three things I do every day — and do fast. Pick one, or mix them for a monthly plan.</p>
+  </section>
+
+  {services.map((s, i) => {
+    const light = i === 1;
+    const L = layouts[s.id] || layouts.faceless;
+    const media = (
+      <div class="svc-media" style={`grid-template-columns: repeat(${L.cols}, minmax(0, 1fr))`}>
+        {s.examples.map((ex, j) => {
+          const it = L.items[j] || { ratio: '16 / 9' };
+          return (
+            <VideoFacade youtubeId={ex.youtubeId} vimeoId={ex.vimeoId} title={`${s.title} — ${ex.label}`} label={ex.label} ratio={it.ratio} reveal
+              style={`${it.span ? `grid-column: span ${it.span};` : ''} ${it.offset ? `margin-top: ${it.offset}px;` : ''}`} />
+          );
+        })}
+      </div>
+    );
+    const text = (
+      <div class="stack" data-reveal style="gap: 24px">
+        <span class:list={['disp', { ac: !light }]} style="font-size: clamp(72px, 8vw, 96px)">{String(i + 1).padStart(2, '0')}</span>
+        <h2 class="disp" style="margin: 0; font-size: clamp(48px, 5.6vw, 88px)">{s.title}</h2>
+        <p style={`margin: 0; font-size: 18px; color: ${light ? '#3D3A36' : 'var(--muted)'}`}>{s.intro}</p>
+        <div class="stack" style="gap: 12px">
+          {s.includes.map((x) => <div class="chk"><Icon name="check" class={light ? '' : 'ac'} />{x}</div>)}
+        </div>
+        <div style={`display: flex; flex-wrap: wrap; gap: 32px; padding-top: 20px; border-top: 1px solid ${light ? '#CFCBC3' : 'var(--line)'}`}>
+          <div><div style={`font-size: 13px; color: ${light ? '#55524C' : 'var(--muted)'}`}>Turnaround</div><div style="font-weight: 800; font-size: 18px">{s.turnaround}</div></div>
+          <div><div style={`font-size: 13px; color: ${light ? '#55524C' : 'var(--muted)'}`}>Best for</div><div style="font-weight: 800; font-size: 18px">{s.bestFor}</div></div>
+        </div>
+        <div class="btns" style="gap: 12px">
+          <a class:list={['btn', light ? 'btn-dark' : 'btn-ac']} href="/contact#quote">Get a quote</a>
+          <a class:list={['btn', light ? 'btn-line-dark' : 'btn-gh']} href="/work">See examples</a>
+        </div>
+      </div>
+    );
+    return (
+      <section id={s.id} class:list={{ 'on-light': light }} style={i === 0 ? 'border-top: 1px solid var(--line)' : ''}>
+        <div class="w svc">
+          {light ? <>{media}{text}</> : <>{text}{media}</>}
+        </div>
+      </section>
+    );
+  })}
+
+  <CtaBand kicker="Not sure which fits?" lines={['Let’s figure it', 'out together.']} secondary={{ href: '/pricing', label: 'See pricing' }} />
+</Base>
+
+<style>
+  .svc {
+    padding-top: clamp(64px, 8vw, 120px); padding-bottom: clamp(64px, 8vw, 120px);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: clamp(40px, 6vw, 96px);
+  }
+  .svc-media { display: grid; gap: 16px; align-content: start; }
+  section[id] { scroll-margin-top: 24px; }
+  @media (max-width: 900px) {
+    /* Text first on phones, examples after */
+    .on-light .svc > .svc-media { order: 2; }
+  }
+</style>

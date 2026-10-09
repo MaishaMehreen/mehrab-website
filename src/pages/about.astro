@@ -1,0 +1,93 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import site from '../content/site.json';
+import photo from '../assets/mehrab-cutout.png';
+
+const { seo, about, stats, brand } = site;
+---
+<Base title={seo.about.title} description={seo.about.description} active="about">
+  <section class="w" style="padding-top: clamp(48px, 7vw, 110px); padding-bottom: clamp(64px, 8vw, 120px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: clamp(40px, 6vw, 96px); align-items: end">
+    <div class="stack" style="gap: 28px">
+      <p class="kick" data-fade style="margin: 0">About</p>
+      <h1 class="disp" style="margin: 0; font-size: clamp(72px, 10vw, 168px)">
+        <span class="rise"><span>Hi, I’m</span></span>
+        <span class="rise"><span class="ac">{brand.name}.</span></span>
+      </h1>
+      <p data-fade style="margin: 0; font-size: 20px; max-width: 560px">{about.intro}</p>
+      <p class="muted" data-fade style="margin: 0; font-size: 17px; max-width: 560px">{about.bio}</p>
+    </div>
+    <div class="ph portrait" data-fade style="aspect-ratio: 4 / 5; border-radius: 4px">
+      <div style="position: absolute; left: 50%; top: 38%; width: 78%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--ac) 55%, transparent) 0%, transparent 68%)"></div>
+      <span class="disp" aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 6%; text-align: center; font-size: clamp(110px, 15vw, 240px); color: #1E1E1E">EDIT</span>
+      <Image src={photo} alt={`${brand.fullName}, video editor`} widths={[400, 700, 1000]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" class="portrait-img" />
+      <div style="position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(10,10,10,0) 55%, rgba(10,10,10,.85) 100%)"></div>
+      <div style="position: absolute; z-index: 3; left: 24px; right: 24px; bottom: 22px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px">
+        <div><div class="disp" style="font-size: clamp(30px, 3vw, 40px)">{brand.fullName}</div><div class="muted" style="font-size: 14px">Video editor · Bangladesh</div></div>
+        <span style="padding: 6px 12px; border-radius: 999px; background: var(--ac); color: #0A0A0A; font-size: 12px; font-weight: 800; flex: none">{stats.level}</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top: 1px solid var(--line); border-bottom: 1px solid var(--line)">
+    <div class="w trust" style="--n: 4">
+      <div data-reveal><div class="disp" style="font-size: 64px" data-count={stats.rating} data-decimals="1">{stats.rating}</div><div class="muted">Rating from {stats.reviews} reviews</div></div>
+      <div data-reveal><div class="disp" style="font-size: 64px">Top <span class="ac">Rated</span></div><div class="muted">Fiverr seller level</div></div>
+      <div data-reveal><div class="disp" style="font-size: 64px">1M+</div><div class="muted">Followers at The Daily Mash</div></div>
+      <div data-reveal><div class="disp" style="font-size: 64px">{stats.responseTime}</div><div class="muted">Average response time</div></div>
+    </div>
+  </section>
+
+  <section class="w sec" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(40px, 6vw, 96px)">
+    <div class="stack" data-reveal style="gap: 24px">
+      <span class="kick">Experience</span>
+      <div style="border-top: 1px solid var(--line)">
+        {about.experience.map((e) => (
+          <div class="stack" style="gap: 6px; padding: 28px 0; border-bottom: 1px solid var(--line)">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px"><h2 class="disp" style="margin: 0; font-size: 36px">{e.role}</h2><span class="muted">{e.dates}</span></div>
+            <div style="font-weight: 700">{e.company}</div>
+            <p class="muted" style="margin: 0">{e.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="stack" data-reveal style="gap: 24px">
+      <span class="kick">Certifications</span>
+      <div style="border-bottom: 1px solid var(--line)">
+        {about.certifications.map((c) => <div style="padding: 20px 0; border-top: 1px solid var(--line); font-weight: 700; font-size: 18px">{c}</div>)}
+      </div>
+      <span class="kick" style="margin-top: 16px">Tools</span>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px">{about.tools.map((t) => <span class="pill">{t}</span>)}</div>
+    </div>
+  </section>
+
+  <section class="on-light">
+    <div class="w stack" style="padding-top: clamp(72px, 9vw, 130px); padding-bottom: clamp(72px, 9vw, 130px); gap: 48px">
+      <div class="stack" style="gap: 12px">
+        <span class="kick-dark">How I work</span>
+        <h2 class="disp h-sec" data-split>Four simple<br /><span style="color: #6B675F">steps</span></h2>
+      </div>
+      <div class="grid-auto" style="--min: 250px">
+        {about.process.map((s, i) => (
+          <div class="stack" data-reveal style="border-top: 3px solid #0A0A0A; padding-top: 24px; gap: 12px">
+            <span class="disp" style="font-size: 72px">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="disp" style="margin: 0; font-size: 30px">{s.title}</h3>
+            <p style="margin: 0; color: #3D3A36">{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand lines={['Let’s work', 'together.']} />
+</Base>
+
+<style>
+  .portrait :global(.portrait-img) {
+    position: absolute; left: 0; right: 0; bottom: 0; top: auto; z-index: 1;
+    width: 100%; height: 92%; object-fit: contain; object-position: 50% 100%;
+    transform-origin: 50% 100%; transition: transform 1.2s var(--ease);
+  }
+  .portrait:hover :global(.portrait-img) { transform: scale(1.05); }
+</style>

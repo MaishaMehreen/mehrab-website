@@ -1,0 +1,13 @@
+---
+import site from '../content/site.json';
+import { whatsapp, email, fiverr } from '../lib/links.js';
+---
+<footer class="w site-footer">
+  <span>© {new Date().getFullYear()} {site.brand.name} · {site.brand.tagline}</span>
+  <nav aria-label="Footer">
+    <a href={whatsapp.href} target={whatsapp.ready ? '_blank' : undefined} rel="noopener">{whatsapp.ready ? 'WhatsApp' : '[ WhatsApp ]'}</a>
+    <a href={email.href}>{email.ready ? 'Email' : '[ Email ]'}</a>
+    <a href={fiverr} target="_blank" rel="noopener">Fiverr</a>
+    <a href="/privacy">Privacy</a>
+  </nav>
+</footer>

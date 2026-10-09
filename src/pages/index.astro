@@ -1,0 +1,167 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import WorkCard from '../components/WorkCard.astro';
+import Icon from '../components/Icon.astro';
+import site from '../content/site.json';
+
+const { seo, stats, showreel, services, projects, testimonials } = site;
+const featured = projects.filter((p) => p.featured).slice(0, 6);
+const reelId = showreel.fullYoutubeId || showreel.fullVimeoId;
+const marquee = site.marquee.join(' ✦ ') + ' ✦';
+---
+<Base title={seo.home.title} description={seo.home.description} overlayHeader>
+  <div class="intro" slot="intro" aria-hidden="true"><div class="mask"><span class="disp">{site.brand.name}</span></div></div>
+
+  <!-- HERO: full-screen showreel behind the headline -->
+  <section class="ph hero">
+    <div class="hero-media" data-hero-media>
+      <div class="glow" style="animation-duration: 18s"></div>
+      <video data-showreel autoplay muted loop playsinline preload="metadata" poster={showreel.posterImage || undefined} aria-hidden="true">
+        <source src={showreel.loopFile} type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero-shade"></div>
+    <span class="phl hero-label" data-showreel-label>[ Full-screen showreel loop, 30–60 sec ]</span>
+
+    <div class="w hero-body">
+      <div class="stack" style="gap: 28px; max-width: 980px">
+        <p class="kick" data-fade style="margin: 0">{stats.level} video editor · Faceless &amp; short-form</p>
+        <h1 class="disp" style="margin: 0; font-size: clamp(46px, 9.4vw, 152px)">
+          <span class="rise"><span>Retention-first</span></span>
+          <span class="rise"><span>video editing</span></span>
+          <span class="rise"><span class="ac">for creators</span></span>
+        </h1>
+        <p data-fade style="margin: 0; max-width: 520px; font-size: 18px; color: #D6D2CB">Story-driven edits for faceless YouTube channels and Reels, TikTok and Shorts. More watch time, on time, every time.</p>
+        <div class="btns" data-fade>
+          <a class="btn btn-ac" href="/contact">Book a free call <Icon name="arrow" /></a>
+          <a class="btn btn-gh" href="/work">See my work</a>
+        </div>
+      </div>
+      {reelId ? (
+        <button type="button" class="play" data-fade data-lightbox data-youtube={showreel.fullYoutubeId || undefined} data-vimeo={showreel.fullVimeoId || undefined} aria-label="Play showreel with sound" data-cursor="video">
+          <Icon name="play" size={26} />
+        </button>
+      ) : (
+        <a class="play" data-fade href="/work" aria-label="Watch my work">
+          <Icon name="play" size={26} />
+        </a>
+      )}
+    </div>
+  </section>
+
+  <!-- TRUST BAR (numbers count up) -->
+  <section style="border-bottom: 1px solid var(--line)">
+    <div class="w trust">
+      <div>
+        <span class="disp" style="font-size: 56px"><span data-count={stats.rating} data-decimals="1">{stats.rating}</span><span class="ac" style="font-size: 32px"> / 5</span></span>
+        <span class="muted" style="font-size: 14px">Average rating on Fiverr</span>
+      </div>
+      <div>
+        <span class="disp" style="font-size: 56px" data-count={stats.reviews}>{stats.reviews}</span>
+        <span class="muted" style="font-size: 14px">Client reviews</span>
+      </div>
+      <div>
+        <span class="disp" style="font-size: 56px">Top <span class="ac">Rated</span></span>
+        <span class="muted" style="font-size: 14px">Fiverr seller level</span>
+      </div>
+      <div>
+        <span class="disp" style="font-size: 56px">{stats.responseTime}</span>
+        <span class="muted" style="font-size: 14px">Average response time</span>
+      </div>
+      <div style="justify-content: center; gap: 10px">
+        <div style="display: flex; flex-wrap: wrap; gap: 8px">
+          {stats.countries.map((c) => <span class="tag">{c}</span>)}
+          <span class="tag tag-dark">+ more</span>
+        </div>
+        <span class="muted" style="font-size: 14px">Clients across the US, UK &amp; Europe</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marq-wrap" aria-hidden="true">
+    <div class="marq disp"><span>{marquee}</span><span>{marquee}</span></div>
+  </div>
+
+  <!-- SERVICES PREVIEW -->
+  <section class="w stack" style="padding-top: clamp(80px, 9vw, 140px); padding-bottom: clamp(64px, 8vw, 120px); gap: 48px">
+    <div class="row-between">
+      <div class="stack" style="gap: 12px">
+        <span class="kick">01 — Services</span>
+        <h2 class="disp h-sec" data-split>What I<br /><span style="color: #7A7671">edit</span></h2>
+      </div>
+      <a class="btn btn-gh" href="/services">All services</a>
+    </div>
+    <div class="grid-auto">
+      {services.map((s, i) => (
+        <a class="box card" data-reveal href={`/services#${s.id}`} style="padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 56px; min-height: 340px">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start">
+            <span class="disp ac" style="font-size: 64px">{String(i + 1).padStart(2, '0')}</span>
+            <Icon name="diag" size={32} />
+          </div>
+          <div>
+            <h3 class="disp" style="margin: 0 0 10px; font-size: 36px">{s.title}</h3>
+            <p class="muted" style="margin: 0">{s.short}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- FEATURED WORK -->
+  <section class="on-light">
+    <div class="w stack" style="padding-top: clamp(72px, 9vw, 130px); padding-bottom: clamp(72px, 9vw, 130px); gap: 48px">
+      <div class="row-between">
+        <div class="stack" style="gap: 12px">
+          <span class="kick-dark">02 — Featured work</span>
+          <h2 class="disp h-sec" data-split>Videos that<br /><span style="color: #6B675F">get watched</span></h2>
+        </div>
+        <a class="btn btn-dark" href="/work">See all work</a>
+      </div>
+      <div class="grid-fill" style="--min: 340px">
+        {featured.map((p) => <WorkCard p={p} light />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="w stack sec" style="gap: 48px">
+    <div class="stack" style="gap: 12px">
+      <span class="kick">03 — Kind words</span>
+      <h2 class="disp h-sec" data-split>{stats.reviews} reviews.<br /><span style="color: #7A7671">Here are a few.</span></h2>
+    </div>
+    <div class="grid-auto" style="--min: 300px">
+      {testimonials.map((t) => (
+        <figure class="box" data-reveal style="margin: 0; padding: 36px 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 320px">
+          <blockquote style="margin: 0; font-size: 21px; line-height: 1.45; font-weight: 600">“{t.quote}”</blockquote>
+          <figcaption style="display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px"><span>{t.by}</span><span class="ac" style="font-weight: 800">{t.rating}</span></figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="muted" style="margin: 0; font-size: 14px">Previously video editor at The Daily Mash (1M+ followers), 2023–2024.</p>
+  </section>
+
+  <CtaBand size="clamp(60px, 11vw, 184px)" />
+
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Showreel">
+    <div class="lightbox-inner"><button type="button" class="lightbox-close" aria-label="Close video">×</button></div>
+  </div>
+</Base>
+
+<style>
+  .hero { min-height: clamp(640px, 100svh, 980px); display: flex; flex-direction: column; }
+  .hero-media { position: absolute; inset: 0; will-change: transform; }
+  .hero-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s; }
+  .hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,.85) 100%); }
+  .hero-label { left: auto; right: var(--gutter); bottom: 24px; }
+  .hero-body {
+    position: relative; z-index: 2; width: 100%; margin-top: auto;
+    padding-top: 120px; padding-bottom: clamp(56px, 7vw, 96px);
+    display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 40px;
+  }
+  @media (max-width: 640px) {
+    .hero-label { right: auto; left: var(--gutter); bottom: 12px; }
+    .hero-body .play { width: 72px; height: 72px; }
+  }
+</style>

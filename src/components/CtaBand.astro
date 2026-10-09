@@ -1,0 +1,25 @@
+---
+// Accent-colour "Book a free call" band that ends every page.
+import Icon from './Icon.astro';
+import { fiverr } from '../lib/links.js';
+interface Btn { href: string; label: string; external?: boolean }
+const {
+  kicker = 'Free 15-minute call',
+  lines = ['More watch time', 'starts here.'],
+  primary = { href: '/contact', label: 'Book a free call' },
+  secondary = { href: fiverr, label: 'Prefer Fiverr? Order here', external: true },
+  size = 'clamp(60px, 10vw, 168px)',
+} = Astro.props as { kicker?: string; lines?: string[]; primary?: Btn; secondary?: Btn | null; size?: string };
+---
+<section class="on-ac">
+  <div class="w stack" style="padding-top: clamp(72px, 9vw, 140px); padding-bottom: clamp(72px, 9vw, 140px); gap: 36px">
+    <span class="kick-dark">{kicker}</span>
+    <h2 class="disp" data-split style={`margin: 0; font-size: ${size}`}>
+      {lines.map((l, i) => <>{l}{i < lines.length - 1 && <br />}</>)}
+    </h2>
+    <div class="btns">
+      <a class="btn btn-dark" href={primary.href}>{primary.label} <Icon name="arrow" /></a>
+      {secondary && <a class="btn btn-line-dark" href={secondary.href} target={secondary.external ? '_blank' : undefined} rel={secondary.external ? 'noopener' : undefined}>{secondary.label}</a>}
+    </div>
+  </div>
+</section>

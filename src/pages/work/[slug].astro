@@ -1,0 +1,77 @@
+---
+// One page per project in site.json → "projects".
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import VideoFacade from '../../components/VideoFacade.astro';
+import site from '../../content/site.json';
+
+export function getStaticPaths() {
+  const list = site.projects;
+  return list.map((p, i) => ({ params: { slug: p.slug }, props: { p, next: list[(i + 1) % list.length] } }));
+}
+const { p, next } = Astro.props;
+const facts = [
+  ['Client', p.client],
+  ['Format', p.format],
+  ['Turnaround', p.turnaround],
+  ['Videos edited', p.videosEdited],
+];
+---
+<Base title={`${p.title} – Case Study | Mehrab`} description={`How Mehrab edited “${p.title}” — ${p.category.toLowerCase()} video editing case study: the goal, the edit and the results.`} active="work">
+  <section class="w stack" style="padding-top: clamp(40px, 5vw, 80px); padding-bottom: 48px; gap: 28px">
+    <a href="/work" class="muted" data-fade style="font-size: 14px; text-decoration: none; align-self: flex-start; padding: 8px 0">← All work</a>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px" data-fade><span class="tag">{p.category}</span><span class="tag tag-dark">{p.tag}</span></div>
+    <h1 class="disp" style="margin: 0; font-size: clamp(56px, 10vw, 168px)">
+      <span class="rise"><span>{p.title}</span></span>
+      <span class="rise"><span class="ac">case study</span></span>
+    </h1>
+    <div data-fade style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 24px; padding-top: 24px; border-top: 1px solid var(--line)">
+      {facts.map(([k, v]) => <div><div class="muted" style="font-size: 13px">{k}</div><div style="font-weight: 700">{v}</div></div>)}
+    </div>
+  </section>
+
+  <VideoFacade youtubeId={p.youtubeId} vimeoId={p.vimeoId} title={p.title} label="YouTube / Vimeo embed of the video" ratio="16 / 9" big style="border-radius: 0; max-height: 82vh; width: 100%" />
+
+  <section class="w" style="padding-top: clamp(72px, 9vw, 130px); padding-bottom: clamp(56px, 7vw, 100px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(32px, 5vw, 80px)">
+    <div class="stack" data-reveal style="gap: 16px">
+      <span class="kick">01 — The goal</span>
+      <h2 class="disp" style="margin: 0; font-size: clamp(40px, 4.4vw, 64px)">What the client needed</h2>
+      <p class="muted" style="margin: 0; font-size: 18px">{p.goal}</p>
+    </div>
+    <div class="stack" data-reveal style="gap: 16px">
+      <span class="kick">02 — What I did</span>
+      <h2 class="disp" style="margin: 0; font-size: clamp(40px, 4.4vw, 64px)">How I edited it</h2>
+      <ul style="margin: 0; padding-left: 20px; font-size: 18px; color: var(--muted); display: flex; flex-direction: column; gap: 8px">
+        {p.whatIDid.map((d) => <li>{d}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="w stack" style="padding-bottom: clamp(72px, 9vw, 130px); gap: 32px">
+    <span class="kick">03 — Results</span>
+    <div class="grid-auto" style="--min: 260px">
+      {p.results.map((r) => (
+        <div class="box stack" data-reveal style="padding: 36px 28px; gap: 8px"><span class="disp ac" style="font-size: clamp(56px, 6vw, 80px)">{r.value}</span><span class="muted">{r.label}</span></div>
+      ))}
+    </div>
+    <figure data-reveal style="margin: 24px 0 0; padding: 48px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 20px">
+      <blockquote class="disp" style="margin: 0; font-size: clamp(32px, 3.6vw, 56px); line-height: 1.05">“{p.quote}”</blockquote>
+      <figcaption class="muted">{p.quoteBy}</figcaption>
+    </figure>
+  </section>
+
+  <a href={`/work/${next.slug}`} class="on-ac next" style="display: block; text-decoration: none">
+    <div class="w" style="padding-top: clamp(56px, 7vw, 100px); padding-bottom: clamp(56px, 7vw, 100px)">
+      <div class="kick-dark">Next project</div>
+      <div class="disp" style="font-size: clamp(48px, 9vw, 150px)">{next.title} <span class="arr">→</span></div>
+    </div>
+  </a>
+  <div style="height: 1px; background: rgba(0,0,0,.15)"></div>
+
+  <CtaBand kicker="Want results like this?" lines={['Your channel', 'is next.']} />
+</Base>
+
+<style>
+  .next .arr { display: inline-block; transition: transform .5s var(--ease); }
+  .next:hover .arr { transform: translateX(16px); }
+</style>

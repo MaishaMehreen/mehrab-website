@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import WorkCard from '../../components/WorkCard.astro';
+import site from '../../content/site.json';
+
+const { seo, projects } = site;
+const filters = ['All', 'Long-form', 'Short-form', 'Food'].map((label) => ({
+  label,
+  count: label === 'All' ? projects.length : projects.filter((p) => p.category === label).length,
+}));
+---
+<Base title={seo.work.title} description={seo.work.description} active="work">
+  <section class="w" style="padding-top: clamp(56px, 7vw, 110px); padding-bottom: 48px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 32px">
+    <div class="stack" style="gap: 20px">
+      <p class="kick" data-fade style="margin: 0">Portfolio</p>
+      <h1 class="disp" style="margin: 0; font-size: clamp(72px, 12vw, 200px)">
+        <span class="rise"><span>The</span></span>
+        <span class="rise"><span class="ac">work</span></span>
+      </h1>
+    </div>
+    <p class="muted lede" data-fade>Faceless YouTube, short-form and food videos. Hover a card to preview — click for the story behind it.</p>
+  </section>
+
+  <section class="w stack" style="padding-bottom: clamp(80px, 9vw, 140px); gap: 32px">
+    <div role="group" aria-label="Filter videos" class="filters" style="display: flex; flex-wrap: wrap; gap: 10px; padding-bottom: 16px; border-bottom: 1px solid var(--line)">
+      {filters.map((f, i) => (
+        <button type="button" class="chip" data-filter={f.label} aria-pressed={i === 0 ? 'true' : 'false'}>{f.label} <span style="opacity: .6">{f.count}</span></button>
+      ))}
+    </div>
+    <p class="sr-only" aria-live="polite" data-filter-status></p>
+    <div class="grid-fill" data-grid>
+      {projects.map((p) => <WorkCard p={p} preview headingTag="h2" />)}
+    </div>
+  </section>
+
+  <CtaBand kicker="Like what you see?" lines={['Your video', 'could be next.']} />
+</Base>
+
+<script>
+  import { gsap } from 'gsap';
+  function initFilter() {
+    const grid = document.querySelector('[data-grid]');
+    if (!grid) return;
+    const chips = document.querySelectorAll('[data-filter]');
+    const status = document.querySelector('[data-filter-status]');
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    chips.forEach((chip) => chip.addEventListener('click', () => {
+      const f = chip.dataset.filter;
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+      const cards = [...grid.querySelectorAll('.card')];
+      const shown = [];
+      cards.forEach((c) => {
+        const on = f === 'All' || c.dataset.cat === f;
+        c.hidden = !on;
+        if (on) shown.push(c);
+      });
+      if (status) status.textContent = `Showing ${shown.length} ${f === 'All' ? '' : f + ' '}videos`;
+      shown.forEach((c) => c.classList.add('is-in'));
+      if (!reduced) gsap.fromTo(shown, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: 'power3.out', clearProps: 'transform,opacity' });
+      window.__refreshScroll?.();
+    }));
+  }
+  document.addEventListener('astro:page-load', initFilter);
+</script>

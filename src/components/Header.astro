@@ -1,0 +1,33 @@
+---
+import site from '../content/site.json';
+import { nav, fiverr } from '../lib/links.js';
+const { active = '', overlay = false } = Astro.props;
+---
+<header class:list={['site-header', { overlay }]}>
+  <div class="w hdr">
+    <a href="/" class="logo" aria-label={`${site.brand.name} — home`}>
+      <span class="disp logo-m" aria-hidden="true">M</span>
+      <span class="logo-t">{site.brand.logoText}<span class="ac">.</span>{site.brand.logoDomain}</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      {nav.map((n) => (
+        <a href={n.href} class:list={{ on: active === n.key }} aria-current={active === n.key ? 'page' : undefined}>{n.label}</a>
+      ))}
+    </nav>
+    <div class="hdr-right">
+      <a class="btn btn-ac btn-sm hdr-cta" href="/contact" aria-current={active === 'contact' ? 'page' : undefined}>Book a free call</a>
+      <button class="burger mopen" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mnav" id="mnav" aria-hidden="true" role="dialog" aria-label="Menu">
+  <button class="burger mclose" type="button" aria-expanded="true" aria-label="Close menu"><span></span></button>
+  {nav.map((n) => (
+    <a class:list={['mlink', { on: active === n.key }]} href={n.href}>{n.label}</a>
+  ))}
+  <a class:list={['mlink', { on: active === 'contact' }]} href="/contact">Contact</a>
+  <div class="btns">
+    <a class="btn btn-ac" href="/contact">Book a free call</a>
+    <a class="btn btn-gh" href={fiverr} rel="noopener" target="_blank">Order on Fiverr</a>
+  </div>
+</div>

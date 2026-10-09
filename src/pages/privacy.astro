@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import site from '../content/site.json';
+import { email, whatsapp } from '../lib/links.js';
+
+const { seo, brand, googleAnalyticsId } = site;
+---
+<Base title={seo.privacy.title} description={seo.privacy.description}>
+  <section class="w" style="padding-top: clamp(56px, 7vw, 110px); padding-bottom: clamp(72px, 9vw, 130px)">
+    <p class="kick" data-fade style="margin: 0 0 20px">Privacy</p>
+    <h1 class="disp" style="margin: 0 0 48px; font-size: clamp(56px, 9vw, 140px)">
+      <span class="rise"><span>Your info,</span></span>
+      <span class="rise"><span class="ac">kept simple</span></span>
+    </h1>
+    <div class="legal" data-fade>
+      <p class="muted">Last updated: October 2026</p>
+      <p>This website belongs to {brand.fullName} (“I”, “me”). I only collect what I need to reply to you and do the work you ask for.</p>
+
+      <h2>What I collect</h2>
+      <ul>
+        <li><strong>Quote form:</strong> your name, email, channel link, video type, videos per month, budget range, footage link and any preferred call time you choose. The form is processed by Netlify, which hosts this site.</li>
+        <li><strong>Call booking:</strong> if you book a call, the booking tool (e.g. Calendly or Cal.com) collects the details you enter there, under its own privacy policy.</li>
+        <li><strong>Messages:</strong> anything you send me by email, WhatsApp or Fiverr.</li>
+        {googleAnalyticsId
+          ? <li><strong>Analytics:</strong> this site uses Google Analytics to count visits and see which pages are useful. It uses cookies and collects anonymous usage data such as pages viewed and device type.</li>
+          : <li><strong>Analytics:</strong> this site does not currently use analytics or tracking cookies.</li>}
+        <li><strong>Videos:</strong> embedded YouTube or Vimeo players only load when you press play. Once loaded, those services may set their own cookies.</li>
+      </ul>
+
+      <h2>How I use it</h2>
+      <p>Only to answer your enquiry, plan and deliver your videos, and send invoices. I never sell your data or add you to a mailing list without asking.</p>
+
+      <h2>Your footage and channel</h2>
+      <p>Your files stay private. I only show your work publicly (for example in my portfolio) with your permission.</p>
+
+      <h2>How long I keep it</h2>
+      <p>Enquiries are kept for as long as needed to work together and for normal business records, then deleted.</p>
+
+      <h2>Your rights</h2>
+      <p>You can ask me to see, correct or delete the information I hold about you at any time.</p>
+
+      <h2>Contact</h2>
+      <p>Email: <a href={email.href}>{email.label}</a> · WhatsApp: <a href={whatsapp.href}>{whatsapp.label}</a></p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .legal { max-width: 760px; font-size: 17px; }
+  .legal h2 { font-family: 'Anton', Impact, sans-serif; text-transform: uppercase; font-weight: 400; font-size: 32px; line-height: 1; margin: 48px 0 12px; }
+  .legal ul { padding-left: 20px; display: flex; flex-direction: column; gap: 10px; color: #D6D2CB; }
+  .legal p { color: #D6D2CB; }
+</style>

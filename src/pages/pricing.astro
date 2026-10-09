@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import site from '../content/site.json';
+import { fiverr } from '../lib/links.js';
+
+const { seo, pricing } = site;
+const unitStyle = "font-family: 'Manrope', sans-serif; font-size: 15px; text-transform: none; font-weight: 600";
+---
+<Base title={seo.pricing.title} description={seo.pricing.description} active="pricing">
+  <section class="w" style="padding-top: clamp(56px, 7vw, 110px); padding-bottom: clamp(48px, 6vw, 80px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 32px">
+    <div class="stack" style="gap: 20px">
+      <p class="kick" data-fade style="margin: 0">Pricing</p>
+      <h1 class="disp h-page">
+        <span class="rise"><span>Simple</span></span>
+        <span class="rise"><span class="ac">pricing</span></span>
+      </h1>
+    </div>
+    <p class="muted lede" data-fade style="max-width: 400px">Clear packages per video, or a monthly plan if you upload every week. No surprises.</p>
+  </section>
+
+  <section class="w" style="padding-bottom: 24px">
+    <div class="grid-auto">
+      {pricing.tiers.map((t) => t.popular ? (
+        <div class="on-ac stack tier" data-reveal style="padding: 36px 32px; gap: 28px; position: relative">
+          <span style="position: absolute; top: 20px; right: 20px; padding: 6px 12px; border-radius: 999px; background: #0A0A0A; color: var(--text); font-size: 12px; font-weight: 700">Most popular</span>
+          <div><h2 class="disp" style="margin: 0; font-size: 36px">{t.name}</h2><p style="margin: 6px 0 0; color: #2A2A2A">{t.description}</p></div>
+          <div class="disp" style="font-size: 72px">{t.price}<span style={unitStyle}> {t.unit}</span></div>
+          <div class="stack" style="gap: 10px">{t.features.map((f) => <div class="chk"><Icon name="check" />{f}</div>)}</div>
+          <a class="btn btn-dark" href="/contact#quote" style="margin-top: auto">Choose {t.name}</a>
+        </div>
+      ) : (
+        <div class="box stack tier" data-reveal style="padding: 36px 32px; gap: 28px">
+          <div><h2 class="disp" style="margin: 0; font-size: 36px">{t.name}</h2><p class="muted" style="margin: 6px 0 0">{t.description}</p></div>
+          <div class="disp" style="font-size: 72px">{t.price}<span class="muted" style={unitStyle}> {t.unit}</span></div>
+          <div class="stack" style="gap: 10px">{t.features.map((f) => <div class="chk"><Icon name="check" class="ac" />{f}</div>)}</div>
+          <a class="btn btn-gh" href="/contact#quote" style="margin-top: auto">Choose {t.name}</a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="w stack" style="padding-top: 24px; padding-bottom: clamp(72px, 9vw, 130px); gap: 20px">
+    <div class="box" data-reveal style="padding: clamp(28px, 4vw, 56px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px">
+      <div class="stack" style="gap: 12px; max-width: 640px">
+        <span class="kick">For weekly creators</span>
+        <h2 class="disp" style="margin: 0; font-size: clamp(44px, 5vw, 80px)">{pricing.retainer.title}</h2>
+        <p class="muted" style="margin: 0; font-size: 18px">{pricing.retainer.description}</p>
+      </div>
+      <div class="stack" style="gap: 16px; align-items: flex-start">
+        <div class="disp" style="font-size: 72px">{pricing.retainer.price}<span class="muted" style={unitStyle}> {pricing.retainer.unit}</span></div>
+        <a class="btn btn-ac" href="/contact">Book a call to plan it</a>
+      </div>
+    </div>
+    <div data-reveal style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line)">
+      <span style="font-size: 17px">Prefer platform protection? Faceless YouTube edits start from <strong class="ac">{pricing.fiverrFromFaceless}</strong> and food shorts from <strong class="ac">{pricing.fiverrFromFood}</strong> on Fiverr.</span>
+      <a class="btn btn-gh" href={fiverr} target="_blank" rel="noopener">Order on Fiverr</a>
+    </div>
+  </section>
+
+  <CtaBand kicker="Need something custom?" lines={['Tell me what', 'you need.']} primary={{ href: '/contact', label: 'Book a free call' }} secondary={{ href: '/contact#quote', label: 'Get a quote' }} />
+</Base>
+
+<style>
+  .tier .chk { font-size: 16px; }
+  .tier .disp { overflow-wrap: anywhere; }
+</style>

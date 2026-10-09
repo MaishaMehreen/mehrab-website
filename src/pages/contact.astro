@@ -1,0 +1,187 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import site from '../content/site.json';
+import { whatsapp, email, fiverr } from '../lib/links.js';
+
+const { seo, contact } = site;
+const booking = contact.bookingUrl;
+---
+<Base title={seo.contact.title} description={seo.contact.description} active="contact">
+  <section class="w stack" style="padding-top: clamp(48px, 6vw, 96px); padding-bottom: 48px; gap: 20px">
+    <p class="kick" data-fade style="margin: 0">Contact</p>
+    <h1 class="disp h-page">
+      <span class="rise"><span>Let’s make</span></span>
+      <span class="rise"><span class="ac">it move</span></span>
+    </h1>
+  </section>
+
+  <section class="w contact-grid">
+    <!-- Book a call -->
+    <div id="book" class="stack book" data-fade>
+      <div class="stack" style="gap: 6px">
+        <h2 class="disp" style="margin: 0; font-size: clamp(36px, 4vw, 44px)">Book a free 15-min call</h2>
+        {booking
+          ? <p class="muted" style="margin: 0">Times are shown in your time zone.</p>
+          : <p class="muted" style="margin: 0">Times shown in your time zone. <strong style="color: var(--text)">[ Calendly / Cal.com embed goes here ]</strong> — until then, pick a time you’d like and it’s added to your request.</p>}
+      </div>
+      {booking ? (
+        <iframe class="booking-frame" src={booking} title="Book a free 15-minute call" loading="lazy" data-lenis-prevent></iframe>
+      ) : (
+        <div class="stack" style="gap: 16px" data-picker data-times={JSON.stringify(contact.callTimes)}>
+          <div role="group" aria-label="Choose a day" class="days" data-days></div>
+          <div role="group" aria-label="Choose a time" class="times" data-times-wrap>
+            {contact.callTimes.map((t) => <button type="button" class="slot" aria-pressed="false" data-time={t}>{t}</button>)}
+          </div>
+          <button type="button" class="btn btn-ac" data-book style="width: 100%" disabled>Pick a time</button>
+          <p class="muted" data-book-note style="margin: 0; font-size: 14px" aria-live="polite"></p>
+        </div>
+      )}
+    </div>
+
+    <!-- Quote form -->
+    <div class="stack" data-fade style="gap: 24px">
+      <div class="sent on-ac stack" data-sent hidden tabindex="-1">
+        <span class="disp" style="font-size: clamp(40px, 5vw, 56px)">Got it — thanks!</span>
+        <p style="margin: 0; font-size: 18px">Your request is in. Expect a reply within about an hour.</p>
+      </div>
+      <form id="quote" name="quote" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field" data-astro-reload class="stack" style="gap: 18px">
+        <input type="hidden" name="form-name" value="quote" />
+        <p hidden><label>Don’t fill this out: <input name="bot-field" /></label></p>
+        <input type="hidden" name="preferred-call-time" data-pref value="" />
+        <input type="hidden" name="time-zone" data-tz value="" />
+        <h2 class="disp" style="margin: 0; font-size: clamp(36px, 4vw, 44px)">Or get a quote</h2>
+        <div class="grid-auto" style="--min: 220px; gap: 16px">
+          <label class="fld">Name<input class="in" type="text" name="name" autocomplete="name" required /></label>
+          <label class="fld">Email<input class="in" type="email" name="email" autocomplete="email" required /></label>
+        </div>
+        <label class="fld">Channel link<input class="in" type="url" name="channel" placeholder="https://youtube.com/@yourchannel" /></label>
+        <div class="grid-auto" style="--min: 170px; gap: 16px">
+          <label class="fld">Video type<select class="in" name="video-type">{contact.videoTypes.map((o) => <option>{o}</option>)}</select></label>
+          <label class="fld">Videos per month<select class="in" name="videos-per-month">{contact.videosPerMonth.map((o) => <option>{o}</option>)}</select></label>
+          <label class="fld">Budget range<select class="in" name="budget">{contact.budgetRanges.map((o) => <option>{o}</option>)}</select></label>
+        </div>
+        <label class="fld">Footage or upload link<input class="in" type="url" name="footage" placeholder="Google Drive, Dropbox…" /></label>
+        <p class="pref-note" data-pref-note hidden></p>
+        <button type="submit" class="btn btn-ac" style="align-self: flex-start">Send my request <Icon name="arrow" /></button>
+        <p data-error role="alert" hidden style="margin: 0; color: #FF8A7A"></p>
+      </form>
+
+      <div style="border-top: 1px solid var(--line); margin-top: 8px">
+        <a class="qk" href={whatsapp.href} target={whatsapp.ready ? '_blank' : undefined} rel="noopener"><span style="font-weight: 700; font-size: 18px">WhatsApp</span><span class="muted">{whatsapp.label} →</span></a>
+        <a class="qk" href={email.href}><span style="font-weight: 700; font-size: 18px">Email</span><span class="muted">{email.label} →</span></a>
+        <a class="qk" href={fiverr} target="_blank" rel="noopener"><span style="font-weight: 700; font-size: 18px">Prefer Fiverr? Order here</span><span class="muted">{contact.fiverrLabel} →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="on-ac">
+    <div class="w row-between" style="padding-top: clamp(56px, 7vw, 100px); padding-bottom: clamp(56px, 7vw, 100px); align-items: center">
+      <h2 class="disp" data-split style="margin: 0; font-size: clamp(48px, 8vw, 128px)">Book a free call.</h2>
+      <a class="btn btn-dark" href="#book">Pick a time <Icon name="arrow" /></a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact-grid { padding-bottom: clamp(72px, 9vw, 130px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: clamp(32px, 5vw, 72px); align-items: start; }
+  .book { gap: 24px; padding: clamp(20px, 3vw, 40px); border: 1.5px solid var(--box); scroll-margin-top: 24px; }
+  .booking-frame { width: 100%; height: 700px; border: 0; border-radius: 10px; background: #fff; }
+  .days { display: flex; flex-wrap: wrap; gap: 10px; }
+  .times { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  @media (max-width: 380px) { .times { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .sent { padding: clamp(32px, 4vw, 56px); gap: 12px; }
+  .sent:focus { outline: none; }
+  .pref-note { margin: 0; padding: 12px 16px; border-radius: 10px; border: 1.5px dashed var(--ac); font-size: 15px; }
+  [data-book]:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+  #quote { scroll-margin-top: 24px; }
+</style>
+
+<script>
+  function initContact() {
+    const form = document.querySelector('form#quote');
+    if (!form) return;
+    const pref = form.querySelector('[data-pref]');
+    const prefNote = form.querySelector('[data-pref-note]');
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    form.querySelector('[data-tz]').value = tz;
+
+    /* ----- Time picker (used until a Calendly / Cal.com link is added) ----- */
+    const picker = document.querySelector('[data-picker]');
+    if (picker) {
+      const daysEl = picker.querySelector('[data-days]');
+      const bookBtn = picker.querySelector('[data-book]');
+      const note = picker.querySelector('[data-book-note]');
+      const days = [];
+      const d = new Date();
+      while (days.length < 5) {
+        d.setDate(d.getDate() + 1);
+        if (d.getDay() !== 0 && d.getDay() !== 6) days.push(new Date(d));
+      }
+      let day = 0, time = '';
+      const label = (x) => x.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+      daysEl.innerHTML = '';
+      days.forEach((x, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'slot';
+        b.style.cssText = 'flex: 1 1 80px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 0; min-height: 68px; line-height: 1.2';
+        b.setAttribute('aria-pressed', String(i === 0));
+        b.setAttribute('aria-label', label(x));
+        b.innerHTML = `<span style="font-size: 12px; opacity: .75">${x.toLocaleDateString('en-US', { weekday: 'short' })}</span><span style="font-size: 20px; font-weight: 800">${x.getDate()}</span>`;
+        b.addEventListener('click', () => {
+          day = i;
+          daysEl.querySelectorAll('.slot').forEach((s, j) => s.setAttribute('aria-pressed', String(j === i)));
+          update();
+        });
+        daysEl.appendChild(b);
+      });
+      const timeBtns = picker.querySelectorAll('[data-time]');
+      timeBtns.forEach((b) => b.addEventListener('click', () => {
+        time = b.dataset.time;
+        timeBtns.forEach((s) => s.setAttribute('aria-pressed', String(s === b)));
+        update();
+      }));
+      function update() {
+        bookBtn.disabled = !time;
+        bookBtn.textContent = time ? `Add ${label(days[day])}, ${time} to my request` : 'Pick a time';
+        note.textContent = '';
+      }
+      bookBtn.addEventListener('click', () => {
+        if (!time) return;
+        const val = `${label(days[day])}, ${time} (${tz})`;
+        pref.value = val;
+        prefNote.hidden = false;
+        prefNote.textContent = `Preferred call time: ${val}. Fill in your details below and send — I’ll confirm by email.`;
+        note.textContent = 'Added — now send the quote form to confirm.';
+        form.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+        form.querySelector('input[name="name"]').focus({ preventScroll: true });
+      });
+    }
+
+    /* ----- Netlify Forms submit without leaving the page ----- */
+    const sent = document.querySelector('[data-sent]');
+    const err = form.querySelector('[data-error]');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      err.hidden = true;
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      try {
+        const body = new URLSearchParams(new FormData(form)).toString();
+        const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body });
+        if (!res.ok) throw new Error(String(res.status));
+        form.hidden = true;
+        sent.hidden = false;
+        sent.focus();
+      } catch {
+        err.hidden = false;
+        err.textContent = 'Sorry, that didn’t send. Please try again, or reach me on WhatsApp, email or Fiverr below.';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  }
+  document.addEventListener('astro:page-load', initContact);
+</script>
