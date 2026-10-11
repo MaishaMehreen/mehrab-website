@@ -233,6 +233,8 @@ function initPreviews() {
         v.src = v.dataset.src;
         v.addEventListener('error', () => v.remove(), { once: true });
         v.addEventListener('loadeddata', () => v.classList.add('ready'), { once: true });
+      } else if (v.readyState >= 2) {
+        v.classList.add('ready');
       }
       v.play().catch(() => {});
     });
@@ -259,6 +261,19 @@ function makeFrame(src, title) {
 function initFacades() {
   document.querySelectorAll('button.facade').forEach((b) => {
     b.addEventListener('click', () => {
+      if (b.dataset.file) {
+        const v = document.createElement('video');
+        v.className = 'vframe';
+        v.src = b.dataset.file;
+        v.controls = true;
+        v.autoplay = true;
+        v.playsInline = true;
+        v.style.cssText = 'object-fit: contain; background: #000';
+        v.setAttribute('aria-label', b.getAttribute('aria-label') || 'Video');
+        b.replaceWith(v);
+        v.play().catch(() => {});
+        return;
+      }
       const src = embedUrl(b);
       if (!src) return;
       b.replaceWith(makeFrame(src, b.getAttribute('aria-label')));
@@ -294,7 +309,9 @@ function initShowreel() {
   const v = document.querySelector('[data-showreel]');
   if (!v) return;
   const label = document.querySelector('[data-showreel-label]');
-  v.addEventListener('loadeddata', () => { v.style.opacity = '1'; label?.remove(); }, { once: true });
+  const show = () => { v.style.opacity = '1'; label?.remove(); };
+  if (v.readyState >= 2) show();
+  else v.addEventListener('loadeddata', show, { once: true });
   v.addEventListener('error', () => v.remove(), { once: true });
   v.querySelector('source')?.addEventListener('error', () => v.remove(), { once: true });
   if (reduced) { v.removeAttribute('autoplay'); v.pause(); }

@@ -11,6 +11,9 @@ export const email = c.email
   ? { href: `mailto:${c.email}`, label: c.email, ready: true }
   : { href: '/contact#quote', label: c.emailLabel, ready: false };
 
+const phoneDigits = (c.phone || '').replace(/[^\d+]/g, '');
+export const phone = phoneDigits ? { href: `tel:${phoneDigits}`, label: c.phone, ready: true } : null;
+
 export const nav = [
   { href: '/work', label: 'Work', key: 'work' },
   { href: '/services', label: 'Services', key: 'services' },

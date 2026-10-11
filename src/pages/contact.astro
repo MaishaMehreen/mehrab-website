@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import site from '../content/site.json';
-import { whatsapp, email, fiverr } from '../lib/links.js';
+import { whatsapp, email, phone, fiverr } from '../lib/links.js';
 
 const { seo, contact } = site;
 const booking = contact.bookingUrl;
@@ -45,7 +45,7 @@ const booking = contact.bookingUrl;
         <span class="disp" style="font-size: clamp(40px, 5vw, 56px)">Got it — thanks!</span>
         <p style="margin: 0; font-size: 18px">Your request is in. Expect a reply within about an hour.</p>
       </div>
-      <form id="quote" name="quote" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field" data-astro-reload class="stack" style="gap: 18px">
+      <form id="quote" name="quote" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field" data-astro-reload data-email={contact.email || undefined} class="stack" style="gap: 18px">
         <input type="hidden" name="form-name" value="quote" />
         <p hidden><label>Don’t fill this out: <input name="bot-field" /></label></p>
         <input type="hidden" name="preferred-call-time" data-pref value="" />
@@ -69,7 +69,8 @@ const booking = contact.bookingUrl;
 
       <div style="border-top: 1px solid var(--line); margin-top: 8px">
         <a class="qk" href={whatsapp.href} target={whatsapp.ready ? '_blank' : undefined} rel="noopener"><span style="font-weight: 700; font-size: 18px">WhatsApp</span><span class="muted">{whatsapp.label} →</span></a>
-        <a class="qk" href={email.href}><span style="font-weight: 700; font-size: 18px">Email</span><span class="muted">{email.label} →</span></a>
+        <a class="qk" href={email.href}><span style="font-weight: 700; font-size: 18px">Email</span><span class="muted" style="overflow-wrap: anywhere; text-align: right">{email.label} →</span></a>
+        {phone && <a class="qk" href={phone.href}><span style="font-weight: 700; font-size: 18px">Phone</span><span class="muted">{phone.label} →</span></a>}
         <a class="qk" href={fiverr} target="_blank" rel="noopener"><span style="font-weight: 700; font-size: 18px">Prefer Fiverr? Order here</span><span class="muted">{contact.fiverrLabel} →</span></a>
       </div>
     </div>
@@ -177,7 +178,17 @@ const booking = contact.bookingUrl;
         sent.focus();
       } catch {
         err.hidden = false;
-        err.textContent = 'Sorry, that didn’t send. Please try again, or reach me on WhatsApp, email or Fiverr below.';
+        const to = form.dataset.email;
+        if (to) {
+          // No form service on this host: offer the visitor's email app with the answers filled in
+          const skip = ['form-name', 'bot-field'];
+          const lines = [...new FormData(form)].filter(([k, v]) => !skip.includes(k) && v).map(([k, v]) => `${k.replace(/-/g, ' ')}: ${v}`);
+          const href = `mailto:${to}?subject=${encodeURIComponent('Video editing quote request')}&body=${encodeURIComponent(lines.join('\n'))}`;
+          err.innerHTML = 'The form couldn’t send from here. <a href="" style="color: var(--ac); font-weight: 700">Send it by email instead →</a> (your answers are already filled in)';
+          err.querySelector('a').href = href;
+        } else {
+          err.textContent = 'Sorry, that didn’t send. Please try again, or reach me on WhatsApp, email or Fiverr below.';
+        }
       } finally {
         btn.disabled = false;
       }

@@ -5,7 +5,11 @@ import WorkCard from '../../components/WorkCard.astro';
 import site from '../../content/site.json';
 
 const { seo, projects } = site;
-const filters = ['All', 'Long-form', 'Short-form', 'Food'].map((label) => ({
+// One filter button per category used in site.json → projects
+const order = ['Documentary', 'Long-form', 'SaaS', 'Short-form', 'Food', 'Animation'];
+const rank = (c) => (order.includes(c) ? order.indexOf(c) : order.length);
+const categories = [...new Set(projects.map((p) => p.category))].sort((a, b) => rank(a) - rank(b));
+const filters = ['All', ...categories].map((label) => ({
   label,
   count: label === 'All' ? projects.length : projects.filter((p) => p.category === label).length,
 }));

@@ -6,7 +6,13 @@ import Icon from '../components/Icon.astro';
 import site from '../content/site.json';
 
 const { seo, stats, showreel, services, projects, testimonials } = site;
-const featured = projects.filter((p) => p.featured).slice(0, 6);
+// The 3 Featured work cards (Documentary, Long-form, SaaS) are chosen in site.json → featuredWork
+const featured = site.featuredWork
+  .map((f) => {
+    const p = projects.find((x) => x.slug === f.project);
+    return p && { ...p, title: f.title };
+  })
+  .filter(Boolean);
 const reelId = showreel.fullYoutubeId || showreel.fullVimeoId;
 const marquee = site.marquee.join(' ✦ ') + ' ✦';
 ---
@@ -120,7 +126,7 @@ const marquee = site.marquee.join(' ✦ ') + ' ✦';
         <a class="btn btn-dark" href="/work">See all work</a>
       </div>
       <div class="grid-fill" style="--min: 340px">
-        {featured.map((p) => <WorkCard p={p} light />)}
+        {featured.map((p) => <WorkCard p={p} light preview />)}
       </div>
     </div>
   </section>

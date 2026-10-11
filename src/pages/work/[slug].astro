@@ -20,7 +20,7 @@ const facts = [
 <Base title={`${p.title} – Case Study | Mehrab`} description={`How Mehrab edited “${p.title}” — ${p.category.toLowerCase()} video editing case study: the goal, the edit and the results.`} active="work">
   <section class="w stack" style="padding-top: clamp(40px, 5vw, 80px); padding-bottom: 48px; gap: 28px">
     <a href="/work" class="muted" data-fade style="font-size: 14px; text-decoration: none; align-self: flex-start; padding: 8px 0">← All work</a>
-    <div style="display: flex; flex-wrap: wrap; gap: 10px" data-fade><span class="tag">{p.category}</span><span class="tag tag-dark">{p.tag}</span></div>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px" data-fade><span class="tag">{p.category}</span>{p.tag !== p.category && <span class="tag tag-dark">{p.tag}</span>}</div>
     <h1 class="disp" style="margin: 0; font-size: clamp(56px, 10vw, 168px)">
       <span class="rise"><span>{p.title}</span></span>
       <span class="rise"><span class="ac">case study</span></span>
@@ -30,7 +30,7 @@ const facts = [
     </div>
   </section>
 
-  <VideoFacade youtubeId={p.youtubeId} vimeoId={p.vimeoId} title={p.title} label="YouTube / Vimeo embed of the video" ratio="16 / 9" big style="border-radius: 0; max-height: 82vh; width: 100%" />
+  <VideoFacade youtubeId={p.youtubeId} vimeoId={p.vimeoId} file={p.videoFile} poster={p.thumbnail} title={p.title} label="YouTube / Vimeo embed of the video" ratio="16 / 9" big style="border-radius: 0; max-height: 82vh; width: 100%" />
 
   <section class="w" style="padding-top: clamp(72px, 9vw, 130px); padding-bottom: clamp(56px, 7vw, 100px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(32px, 5vw, 80px)">
     <div class="stack" data-reveal style="gap: 16px">

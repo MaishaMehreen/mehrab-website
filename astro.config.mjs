@@ -23,7 +23,7 @@ function prefixLinks() {
           .concat(...(await Promise.all((await readdir(d, { withFileTypes: true })).filter((e) => e.isDirectory()).map((e) => walk(join(d, e.name))))));
         for (const file of (await walk(root)).filter((f) => f.endsWith('.html'))) {
           const html = await readFile(file, 'utf8');
-          const out = html.replace(/(\s(?:href|src|action|data-src|poster)=")\/(?!\/)([^"]*)"/g, (m, attr, rest) =>
+          const out = html.replace(/(\s(?:href|src|action|data-src|data-file|poster)=")\/(?!\/)([^"]*)"/g, (m, attr, rest) =>
             ('/' + rest).startsWith(base) || '/' + rest === b ? m : `${attr}${b}/${rest}"`);
           if (out !== html) await writeFile(file, out);
         }
