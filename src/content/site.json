@@ -198,6 +198,12 @@
           "project": "cheesesteak",
           "youtubeId": "",
           "vimeoId": ""
+        },
+        {
+          "label": "Food reel 2",
+          "project": "veganpunk",
+          "youtubeId": "",
+          "vimeoId": ""
         }
       ]
     }
@@ -221,7 +227,7 @@
       "slug": "nike-documentary",
       "title": "Nike documentary",
       "category": "Documentary",
-      "tag": "Documentary",
+      "tag": "Faceless documentary",
       "meta": "[ Client ] · 9:34",
       "thumbnail": "/images/work/nike-documentary.jpg",
       "previewClip": "/videos/preview-nike-documentary.mp4",
@@ -229,7 +235,7 @@
       "vertical": false,
       "placeholderLabel": "Video thumbnail",
       "format": "Documentary · 9:34 · 16:9",
-      "youtubeId": "",
+      "youtubeId": "Sr2dTvRQCS0",
       "vimeoId": "",
       "client": "[ Channel / brand ]",
       "turnaround": "[ e.g. 48 hours ]",
@@ -262,7 +268,7 @@
       "slug": "american-government-fix",
       "title": "American Government Fix",
       "category": "Long-form",
-      "tag": "Faceless YouTube",
+      "tag": "Faceless documentary",
       "meta": "[ Client ] · 7:43",
       "thumbnail": "/images/work/american-government-fix.jpg",
       "previewClip": "/videos/preview-american-government-fix.mp4",
@@ -270,7 +276,7 @@
       "vertical": false,
       "placeholderLabel": "Video thumbnail",
       "format": "Faceless explainer · 7:43 · 16:9",
-      "youtubeId": "",
+      "youtubeId": "XeUz7Cga8EE",
       "vimeoId": "",
       "client": "[ Channel / brand ]",
       "turnaround": "[ e.g. 48 hours ]",
@@ -344,7 +350,7 @@
       "slug": "nancy-pelosi",
       "title": "Nancy Pelosi",
       "category": "Long-form",
-      "tag": "Faceless YouTube",
+      "tag": "Faceless documentary",
       "meta": "[ Client ] · 26:46",
       "thumbnail": "/images/work/nancy-pelosi.jpg",
       "previewClip": "/videos/preview-nancy-pelosi.mp4",
@@ -352,7 +358,7 @@
       "vertical": false,
       "placeholderLabel": "Video thumbnail",
       "format": "Faceless long-form · 26:46 · 16:9",
-      "youtubeId": "",
+      "youtubeId": "g3E6vbLVzD8",
       "vimeoId": "",
       "client": "[ Channel / brand ]",
       "turnaround": "[ e.g. 48 hours ]",
@@ -393,6 +399,47 @@
       "vertical": true,
       "placeholderLabel": "Video thumbnail",
       "format": "Vertical food reel · 1:43 · 9:16",
+      "youtubeId": "",
+      "vimeoId": "",
+      "client": "[ Channel / brand ]",
+      "turnaround": "[ e.g. 48 hours ]",
+      "videosEdited": "[ Number ]",
+      "goal": "[ The client's goal in 2–3 sentences. ]",
+      "whatIDid": [
+        "[ Hook in the first 5 seconds ]",
+        "[ Pacing, B-roll and on-screen text ]",
+        "[ Music, sound effects and captions ]",
+        "[ Delivered on schedule ]"
+      ],
+      "results": [
+        {
+          "value": "[ +X% ]",
+          "label": "Average view duration"
+        },
+        {
+          "value": "[ X views ]",
+          "label": "Total views"
+        },
+        {
+          "value": "[ +X ]",
+          "label": "Subscribers gained"
+        }
+      ],
+      "quote": "[ Approved quote from this client ]",
+      "quoteBy": "[ Client name or initials ] · [ Country ]"
+    },
+    {
+      "slug": "veganpunk",
+      "title": "Veganpunk",
+      "category": "Food",
+      "tag": "Food content",
+      "meta": "[ Client ] · 0:35",
+      "thumbnail": "/images/work/veganpunk.jpg",
+      "previewClip": "/videos/preview-veganpunk.mp4",
+      "videoFile": "/videos/veganpunk.mp4",
+      "vertical": true,
+      "placeholderLabel": "Video thumbnail",
+      "format": "Vertical food reel · 0:35 · 9:16",
       "youtubeId": "",
       "vimeoId": "",
       "client": "[ Channel / brand ]",

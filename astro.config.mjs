@@ -38,4 +38,6 @@ export default defineConfig({
   trailingSlash: 'ignore',
   integrations: [sitemap(), prefixLinks()],
   devToolbar: { enabled: false },
+  // Ignore editors' short-lived temp files so the live preview doesn't trip over them
+  vite: { server: { watch: { ignored: ['**/*.tmp.*', '**/*~', '**/.#*'] } } },
 });
