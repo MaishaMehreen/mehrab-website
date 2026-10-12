@@ -8,7 +8,8 @@ const thumb = p.thumbnail || ytThumb(p.youtubeId);
 <a class="card" href={`/work/${p.slug}`} data-reveal data-cat={p.category} data-preview={preview ? '' : undefined} data-cursor="video" data-cursor-label="View" style={`display: flex; flex-direction: column; gap: 14px; ${light ? 'color: #0A0A0A' : ''}`}>
   <div class="ph" style="aspect-ratio: 4 / 5; border-radius: 4px">
     <div class="glow"></div>
-    {thumb ? <img src={thumb} alt="" loading="lazy" decoding="async" /> : <span class="phl">[ {p.placeholderLabel} ]</span>}
+    {thumb ? <img src={thumb} alt="" loading="lazy" decoding="async" style={p.thumbFocus ? `object-position: ${p.thumbFocus}` : undefined} /> : <span class="phl">[ {p.placeholderLabel} ]</span>}
+    {thumb && <span class="thumb-shade" aria-hidden="true"></span>}
     {preview && p.previewClip && <video muted loop playsinline preload="none" data-src={p.previewClip} aria-hidden="true" class="pv"></video>}
     <span class="tag" style="position: absolute; top: 16px; left: 16px; z-index: 3">{p.category}</span>
     {preview && <span class="hov" style="position: absolute; top: 16px; right: 16px; z-index: 3; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ac)">● Preview</span>}
@@ -20,6 +21,9 @@ const thumb = p.thumbnail || ytThumb(p.youtubeId);
 </a>
 
 <style is:global>
+  .card .thumb-shade { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(180deg, rgba(10,10,10,.28) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,.22) 100%); }
+  .card .ph > img { transition: transform 1.2s var(--ease); }
+  .card:hover .ph > img { transform: scale(1.04); }
   .card .hov { opacity: 0; transition: opacity .4s; }
   .card:hover .hov, .card:focus-visible .hov { opacity: 1; }
   .card video.pv { opacity: 0; transition: opacity .4s; z-index: 2; }

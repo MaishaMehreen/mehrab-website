@@ -3,7 +3,6 @@ import site from '../content/site.json';
 const c = site.contact;
 const digits = (c.whatsappNumber || '').replace(/[^\d]/g, '');
 
-export const fiverr = c.fiverrUrl;
 export const whatsapp = digits
   ? { href: `https://wa.me/${digits}`, label: c.whatsappNumber, ready: true }
   : { href: '/contact#quote', label: c.whatsappLabel, ready: false };

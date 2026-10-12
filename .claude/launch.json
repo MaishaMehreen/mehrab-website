@@ -6,6 +6,12 @@
       "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
       "runtimeArgs": ["node_modules/astro/astro.js", "dev", "--host", "127.0.0.1", "--port", "4321"],
       "port": 4321
+    },
+    {
+      "name": "built-site",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "runtimeArgs": ["node_modules/astro/astro.js", "preview", "--host", "127.0.0.1", "--port", "4323"],
+      "port": 4323
     }
   ]
 }

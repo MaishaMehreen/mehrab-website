@@ -23,19 +23,12 @@
     "positioning": "Retention-first video editing for faceless and short-form creators."
   },
   "contact": {
-    "email": "mehrebalmahmud10@gmail.com",
-    "emailLabel": "mehrebalmahmud10@gmail.com",
+    "email": "mehrabalamahmud10@gmail.com",
+    "emailLabel": "mehrabalamahmud10@gmail.com",
     "whatsappNumber": "+880 1970-662079",
     "whatsappLabel": "+880 1970-662079",
     "phone": "+880 1970-662079",
-    "fiverrUrl": "https://www.fiverr.com/m3hra6",
-    "fiverrLabel": "fiverr.com/m3hra6",
     "bookingUrl": "",
-    "budgetRanges": [
-      "[ Range 1 ]",
-      "[ Range 2 ]",
-      "[ Range 3 ]"
-    ],
     "videoTypes": [
       "Faceless YouTube",
       "Reels / TikTok / Shorts",
@@ -60,7 +53,7 @@
   "seo": {
     "home": {
       "title": "Faceless YouTube Video Editor | Mehrab",
-      "description": "Retention-first video editing for faceless YouTube channels, Reels, TikTok, Shorts and food content. Top Rated on Fiverr, 4.9 from 973 reviews."
+      "description": "Retention-first video editing for faceless YouTube channels, documentaries, SaaS videos, Reels, TikTok and Shorts. Top Rated editor, 4.9 average rating from 973 client reviews."
     },
     "work": {
       "title": "Portfolio – Faceless YouTube & Short-Form Edits | Mehrab",
@@ -71,12 +64,12 @@
       "description": "Faceless YouTube editing, Reels/TikTok/Shorts and food content editing. Often delivered in 1–2 days."
     },
     "pricing": {
-      "title": "Video Editing Pricing & Monthly Retainer | Mehrab",
-      "description": "Simple per-video packages for faceless YouTube and short-form videos, plus a monthly retainer for weekly creators."
+      "title": "Project-Based Video Editing Pricing | Mehrab",
+      "description": "Pricing is agreed per project: single videos, batches of videos, or a monthly retainer, based on length, footage, complexity and turnaround."
     },
     "about": {
       "title": "About Mehrab – Top Rated Video Editor from Bangladesh",
-      "description": "Mehrab Al Mahmud is a Top Rated Fiverr video editor and former video editor at The Daily Mash, helping faceless and short-form creators."
+      "description": "Mehrab Al Mahmud is a Top Rated video editor and former video editor at The Daily Mash, helping faceless and short-form creators."
     },
     "faq": {
       "title": "FAQ – Turnaround, Revisions & Payment | Mehrab",
@@ -169,12 +162,6 @@
         {
           "label": "Reel 1",
           "project": "neoliving",
-          "youtubeId": "",
-          "vimeoId": ""
-        },
-        {
-          "label": "Reel 2",
-          "project": "cheesesteak",
           "youtubeId": "",
           "vimeoId": ""
         }
@@ -385,7 +372,8 @@
         }
       ],
       "quote": "[ Approved quote from this client ]",
-      "quoteBy": "[ Client name or initials ] · [ Country ]"
+      "quoteBy": "[ Client name or initials ] · [ Country ]",
+      "thumbFocus": "36% 50%"
     },
     {
       "slug": "cheesesteak",
@@ -611,52 +599,48 @@
     }
   ],
   "pricing": {
-    "tiers": [
+    "intro": "Every project is different. Pricing is discussed individually based on your video requirements, editing complexity, footage length, turnaround time, and the scope of work. Whether you need a single video or ongoing editing support, we’ll agree on a suitable price before starting.",
+    "factors": [
       {
-        "name": "Basic",
-        "description": "[ Short description — e.g. a clean, simple edit ]",
-        "price": "[ $— ]",
-        "unit": "/ video",
-        "features": [
-          "[ Video length ]",
-          "[ Revisions included ]",
-          "[ Delivery time ]"
-        ],
-        "popular": false
+        "title": "Video length",
+        "text": "The final duration of the edited video."
       },
       {
-        "name": "Standard",
-        "description": "[ Short description — e.g. full edit with motion & sound ]",
-        "price": "[ $— ]",
-        "unit": "/ video",
-        "features": [
-          "[ Video length ]",
-          "[ Revisions included ]",
-          "[ Delivery time ]"
-        ],
-        "popular": true
+        "title": "Footage volume",
+        "text": "How much raw footage needs to be reviewed and edited."
       },
       {
-        "name": "Premium",
-        "description": "[ Short description — e.g. everything, plus priority delivery ]",
-        "price": "[ $— ]",
-        "unit": "/ video",
-        "features": [
-          "[ Video length ]",
-          "[ Revisions included ]",
-          "[ Delivery time ]"
-        ],
-        "popular": false
+        "title": "Editing complexity",
+        "text": "The amount of storytelling, pacing, motion graphics, subtitles, sound design and other editing work required."
+      },
+      {
+        "title": "Turnaround time",
+        "text": "The expected delivery deadline, and whether rush delivery is needed."
+      },
+      {
+        "title": "Revisions",
+        "text": "The revision process and the project’s requirements."
+      },
+      {
+        "title": "Project volume",
+        "text": "Whether you need one video, several videos together, or ongoing monthly editing support."
       }
     ],
-    "retainer": {
-      "title": "Monthly retainer",
-      "description": "A set number of videos every month, a reserved spot in my schedule and priority turnaround. Ideal for faceless channels that upload on a schedule.",
-      "price": "[ $— ]",
-      "unit": "/ month"
-    },
-    "fiverrFromFaceless": "$15",
-    "fiverrFromFood": "$20"
+    "options": [
+      {
+        "title": "Single video",
+        "text": "One edit, start to finish. Ideal for trying out working together or a one-off project."
+      },
+      {
+        "title": "Batch of videos",
+        "text": "Two or more videos edited together, so your channel or campaign stays consistent."
+      },
+      {
+        "title": "Monthly retainer",
+        "text": "Ongoing editing support with a reserved spot in my schedule. Ideal for creators who upload every week."
+      }
+    ],
+    "note": "Pricing for every option is discussed individually and agreed before work begins."
   },
   "about": {
     "intro": "I’m a Top Rated video editor from Bangladesh. I help faceless and short-form creators turn raw footage and scripts into videos people actually finish.",
@@ -671,7 +655,7 @@
       {
         "role": "Freelance Editor",
         "dates": "[ Since 20XX ]",
-        "company": "Fiverr · Top Rated",
+        "company": "Independent · Top Rated",
         "text": "Faceless YouTube and short-form food videos for clients in the US, UK, Netherlands and beyond."
       }
     ],
@@ -706,24 +690,28 @@
   },
   "faq": [
     {
-      "q": "How fast is turnaround?",
-      "a": "Most videos are delivered in 1–2 days, depending on length and how much footage there is. Rush delivery: [ yes / no — confirm ]."
+      "q": "How fast is the turnaround?",
+      "a": "Most videos are delivered within 1–2 days, depending on the video’s length, the amount of raw footage, and the complexity of the project. If you have a specific deadline, let me know in advance so we can discuss the timeline."
     },
     {
-      "q": "How many revisions do I get?",
-      "a": "[ Number ] revisions are included with every package. I want you to be happy with the final video."
+      "q": "Do you offer rush delivery?",
+      "a": "Yes, rush delivery may be possible depending on my current workload and the scope of your project. Please confirm your deadline before we begin so I can let you know whether it is feasible."
+    },
+    {
+      "q": "How many revisions can I request?",
+      "a": "Unlimited revisions are included. I want to make sure the final video aligns with your expectations, so we can work together on adjustments until you’re satisfied, within the agreed project scope. New videos, extra deliverables or changes outside that scope are discussed separately."
     },
     {
       "q": "How do I send my footage?",
-      "a": "Share a link from Google Drive, Dropbox or WeTransfer — whatever you already use. [ Confirm preferred services ]"
+      "a": "Simply share a link to your footage through Google Drive, Dropbox, WeTransfer, or whichever file-sharing service you already use. Make sure the files are accessible so I can download and review them."
     },
     {
       "q": "How do I pay?",
-      "a": "[ Payment methods for direct clients ]. If you’d rather pay through a platform, you can order on Fiverr instead."
+      "a": "Payment can be made through bank transfer or Payoneer. The payment arrangement and project cost will be discussed and agreed upon before the project begins."
     },
     {
       "q": "What about time zones?",
-      "a": "I’m based in Bangladesh and work with clients across the US, UK and Europe. Often your video is edited while you sleep — and ready when you wake up."
+      "a": "I’m based in Bangladesh and work with clients across the US, UK and Europe. Wherever you are, we can discuss your project requirements and deadlines and agree on a timeline that works for you."
     },
     {
       "q": "Do you keep my channel private?",

@@ -1,13 +1,13 @@
 ---
 // Accent-colour "Book a free call" band that ends every page.
 import Icon from './Icon.astro';
-import { fiverr } from '../lib/links.js';
+import { email } from '../lib/links.js';
 interface Btn { href: string; label: string; external?: boolean }
 const {
   kicker = 'Free 15-minute call',
   lines = ['More watch time', 'starts here.'],
   primary = { href: '/contact', label: 'Book a free call' },
-  secondary = { href: fiverr, label: 'Prefer Fiverr? Order here', external: true },
+  secondary = { href: email.href, label: 'Get in touch' },
   size = 'clamp(60px, 10vw, 168px)',
 } = Astro.props as { kicker?: string; lines?: string[]; primary?: Btn; secondary?: Btn | null; size?: string };
 ---
