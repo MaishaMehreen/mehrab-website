@@ -38,7 +38,7 @@ const marquee = site.marquee.join(' ✦ ') + ' ✦';
           <span class="rise"><span>video editing</span></span>
           <span class="rise hero-sub"><span class="ac">for creators</span></span>
         </h1>
-        <p data-fade style="margin: 0; max-width: 520px; font-size: 18px; color: #D6D2CB">Story-driven edits for faceless YouTube channels and Reels, TikTok and Shorts. More watch time, on time, every time.</p>
+        <p data-fade style="margin: 0; max-width: 520px; font-size: 18px; color: #D6D2CB">Story-driven edits for faceless YouTube channels, Reels, TikTok, Shorts and talking-head videos. More watch time, on time, every time.</p>
         <div class="btns" data-fade>
           <a class="btn btn-ac" href="/contact">Book a free call <Icon name="arrow" /></a>
           <a class="btn btn-gh" href="/work">See my work</a>
@@ -61,11 +61,11 @@ const marquee = site.marquee.join(' ✦ ') + ' ✦';
     <div class="w trust">
       <div>
         <span class="disp" style="font-size: 56px"><span data-count={stats.rating} data-decimals="1">{stats.rating}</span><span class="ac" style="font-size: 32px"> / 5</span></span>
-        <span class="muted" style="font-size: 14px">Average client rating</span>
+        <span class="muted" style="font-size: 14px">Average Fiverr rating</span>
       </div>
       <div>
         <span class="disp" style="font-size: 56px" data-count={stats.reviews}>{stats.reviews}</span>
-        <span class="muted" style="font-size: 14px">Client reviews</span>
+        <span class="muted" style="font-size: 14px">Fiverr reviews</span>
       </div>
       <div>
         <span class="disp" style="font-size: 56px">Top <span class="ac">Rated</span></span>
@@ -135,7 +135,7 @@ const marquee = site.marquee.join(' ✦ ') + ' ✦';
   <section class="w stack sec" style="gap: 48px">
     <div class="stack" style="gap: 12px">
       <span class="kick">03 — Kind words</span>
-      <h2 class="disp h-sec" data-split>{stats.reviews} reviews.<br /><span style="color: #7A7671">Here are a few.</span></h2>
+      <h2 class="disp h-sec" data-split>{stats.reviews} Fiverr reviews.<br /><span style="color: #7A7671">Here are a few.</span></h2>
     </div>
     <div class="grid-auto" style="--min: 300px">
       {testimonials.map((t) => (
@@ -144,9 +144,7 @@ const marquee = site.marquee.join(' ✦ ') + ' ✦';
           <figcaption style="display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px"><span>{t.by}</span><span class="ac" style="font-weight: 800">{t.rating}</span></figcaption>
         </figure>
       ))}
-    </div>
-    <p class="muted" style="margin: 0; font-size: 14px">Previously video editor at The Daily Mash (1M+ followers), 2023–2024.</p>
-  </section>
+    </div>  </section>
 
   <CtaBand size="clamp(60px, 11vw, 184px)" />
 

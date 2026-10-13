@@ -32,6 +32,7 @@
     "videoTypes": [
       "Faceless YouTube",
       "Reels / TikTok / Shorts",
+      "Talking head videos",
       "Food content",
       "Other"
     ],
@@ -53,15 +54,15 @@
   "seo": {
     "home": {
       "title": "Faceless YouTube Video Editor | Mehrab",
-      "description": "Retention-first video editing for faceless YouTube channels, documentaries, SaaS videos, Reels, TikTok and Shorts. Top Rated editor, 4.9 average rating from 973 client reviews."
+      "description": "Retention-first video editing for faceless YouTube channels, documentaries, SaaS videos, Reels, TikTok, Shorts and talking-head videos. Top Rated editor, 4.9 average rating from 973 Fiverr reviews."
     },
     "work": {
       "title": "Portfolio – Faceless YouTube & Short-Form Edits | Mehrab",
-      "description": "Faceless YouTube, Reels/TikTok/Shorts and food videos edited by Mehrab. Filter by long-form, short-form and food."
+      "description": "Faceless YouTube, documentaries, SaaS, Reels/TikTok/Shorts, talking-head and food videos edited by Mehrab."
     },
     "services": {
-      "title": "Video Editing Services for YouTube, Reels & Food | Mehrab",
-      "description": "Faceless YouTube editing, Reels/TikTok/Shorts and food content editing. Often delivered in 1–2 days."
+      "title": "Video Editing Services: YouTube, Reels, Talking Heads & Food | Mehrab",
+      "description": "Faceless YouTube editing, Reels/TikTok/Shorts, talking-head videos and food content editing. Often delivered in 1–2 days."
     },
     "pricing": {
       "title": "Project-Based Video Editing Pricing | Mehrab",
@@ -107,6 +108,7 @@
     "Reels",
     "TikTok",
     "Shorts",
+    "Talking heads",
     "Food content",
     "More watch time",
     "On time, every time"
@@ -148,13 +150,14 @@
     },
     {
       "id": "short-form",
-      "title": "Reels, TikTok & Shorts",
-      "short": "Hook-first vertical edits with captions and beat-synced cuts that stop the scroll.",
-      "intro": "Vertical edits that win the first second and keep people to the loop. Built for posting every day.",
+      "title": "Reels, TikTok, Shorts & Talking Heads",
+      "short": "Hook-first vertical edits and talking-head videos, with captions and beat-synced cuts that stop the scroll.",
+      "intro": "Reels, TikTok, Shorts and talking-head videos that win the first second and keep people watching. Built for posting every day.",
       "includes": [
         "Scroll-stopping hooks and fast pacing",
         "Animated captions and beat-synced cuts",
-        "One edit, sized for every platform"
+        "One edit, sized for every platform",
+        "Talking-head videos: tight jump cuts, captions and B-roll"
       ],
       "turnaround": "Often 1–2 days",
       "bestFor": "High-volume posting",
